@@ -1,0 +1,11 @@
+Model Information:
+* title:	Gm_playboy_mansion
+* source:	https://sketchfab.com/3d-models/gm-playboy-mansion-10b1759a7e2a41129f0a4d33d43fe7c7
+* author:	Leafia dev. (https://sketchfab.com/Chano_old)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Gm_playboy_mansion" (https://sketchfab.com/3d-models/gm-playboy-mansion-10b1759a7e2a41129f0a4d33d43fe7c7) by Leafia dev. (https://sketchfab.com/Chano_old) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
