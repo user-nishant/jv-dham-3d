@@ -12,9 +12,11 @@
     "@react-three/drei": "^10.4.4",
     "@react-three/fiber": "^9.2.0",
     "@types/three": "^0.178.0",
+    "antd": "^5.26.4",
     "next": "15.3.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "sass": "^1.89.2",
     "three": "^0.178.0"
   },
   "devDependencies": {

@@ -1,0 +1,19 @@
+.customModel {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  :global {
+    .ant-input-affix-wrapper {
+      .ant-input-prefix {
+        .ant-btn {
+          &.ant-btn-primary {
+            background-color: red;
+            border-color: #1890ff;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
