@@ -6,23 +6,30 @@ import { Suspense, useState, useEffect, useRef } from "react"
 import { useGLTF } from "@react-three/drei"
 import * as THREE from "three"
 
-const cameraAngles = [
+// Simplified to just two camera points
+const cameraPoints = [
     {
-        position: [-55.33539937889818, 39.30364290203104, 126.44447501955844],
-        lookAt: [0, 0, 0],
+        id: 1,
+        position: [-80, 40, 80],
+        color: "#ff6b6b",
+        label: "Front View",
     },
-    // { position: [10, 5, 10], lookAt: [0, 0, 0] },
-    // { position: [-10, 5, 10], lookAt: [0, 0, 0] },
+    {
+        id: 2,
+        position: [80, 40, -80],
+        color: "#4ecdc4",
+        label: "Back View",
+    },
 ]
 
 const defaultCameraAngle = {
-    position: [-55.33539937889818, 39.30364290203104, 126.44447501955844],
+    position: [-80, 40, 80],
     lookAt: [0, 0, 0],
 }
 
-// Back starting position for the rotation animation
-const backStartingAngle = {
-    position: [55.33539937889818, 39.30364290203104, -126.44447501955844], // Opposite side (back of mansion)
+// Wide angle starting position for the initial animation
+const wideAngleStart = {
+    position: [0, 80, 150], // High and far back to see the whole scene
     lookAt: [0, 0, 0],
 }
 
@@ -36,25 +43,25 @@ function CameraController({ cameraPosition, enableAnimation = false }) {
     const animationRef = useRef({
         isAnimating: false,
         startTime: 0,
-        duration: 4000, // 4 seconds for smooth rotation
+        duration: 3000, // 3 seconds for smooth rotation
         startPosition: new THREE.Vector3(),
         targetPosition: new THREE.Vector3(),
-        center: new THREE.Vector3(0, 0, 0), // Mansion center point
+        center: new THREE.Vector3(0, 0, 0),
     })
 
     useEffect(() => {
         if (enableAnimation && !animationRef.current.isAnimating) {
-            // Start the rotation animation
+            // Start the rotation animation from wide angle to first camera point
             animationRef.current.isAnimating = true
             animationRef.current.startTime = Date.now()
 
-            // Set starting and target positions
-            animationRef.current.startPosition.set(...backStartingAngle.position)
-            animationRef.current.targetPosition.set(...defaultCameraAngle.position)
+            // Set starting position to wide angle and target to first camera point
+            animationRef.current.startPosition.set(...wideAngleStart.position)
+            animationRef.current.targetPosition.set(...cameraPoints[0].position)
 
-            // Set initial camera position
-            camera.position.set(...backStartingAngle.position)
-            camera.lookAt(0, 0, 0) // Always look at mansion center
+            // Set initial camera position to wide angle
+            camera.position.set(...wideAngleStart.position)
+            camera.lookAt(0, 0, 0)
             camera.updateProjectionMatrix()
         } else if (!enableAnimation) {
             // Manual camera position change (from button clicks)
@@ -74,42 +81,16 @@ function CameraController({ cameraPosition, enableAnimation = false }) {
             // Apply easing
             const easedProgress = easeInOutCubic(progress)
 
-            // Calculate rotation around the mansion
-            // Convert start and target positions to spherical coordinates relative to center
-            const startVector = new THREE.Vector3().copy(animationRef.current.startPosition)
-            const targetVector = new THREE.Vector3().copy(animationRef.current.targetPosition)
-
-            // Create spherical coordinates
-            const startSpherical = new THREE.Spherical().setFromVector3(startVector)
-            const targetSpherical = new THREE.Spherical().setFromVector3(targetVector)
-
-            // Interpolate spherical coordinates
-            const currentRadius = THREE.MathUtils.lerp(startSpherical.radius, targetSpherical.radius, easedProgress)
-            const currentPhi = THREE.MathUtils.lerp(startSpherical.phi, targetSpherical.phi, easedProgress)
-
-            // For theta (azimuth), we need to handle the circular interpolation properly
-            let startTheta = startSpherical.theta
-            let targetTheta = targetSpherical.theta
-
-            // Ensure we take the shorter path around the circle
-            const thetaDiff = targetTheta - startTheta
-            if (Math.abs(thetaDiff) > Math.PI) {
-                if (thetaDiff > 0) {
-                    startTheta += 2 * Math.PI
-                } else {
-                    targetTheta += 2 * Math.PI
-                }
-            }
-
-            const currentTheta = THREE.MathUtils.lerp(startTheta, targetTheta, easedProgress)
-
-            // Convert back to Cartesian coordinates
-            const currentSpherical = new THREE.Spherical(currentRadius, currentPhi, currentTheta)
-            const currentPosition = new THREE.Vector3().setFromSpherical(currentSpherical)
+            // Interpolate position
+            const currentPosition = new THREE.Vector3().lerpVectors(
+                animationRef.current.startPosition,
+                animationRef.current.targetPosition,
+                easedProgress,
+            )
 
             // Apply to camera
             camera.position.copy(currentPosition)
-            camera.lookAt(0, 0, 0) // Always look at the mansion center
+            camera.lookAt(0, 0, 0) // Always look at the center
             camera.updateProjectionMatrix()
 
             // Check if animation is complete
@@ -122,19 +103,46 @@ function CameraController({ cameraPosition, enableAnimation = false }) {
     return null
 }
 
-function CameraPositionLogger() {
-    const { camera } = useThree()
+function ClickablePoint({ position, color, label, onPointClick }) {
+    const [hovered, setHovered] = useState(false)
 
-    useFrame(() => {
-        // This function runs on every frame
-        // Access the camera's position
-        // console.log('Camera Position:', camera.position);
-    })
+    const handleClick = (event) => {
+        event.stopPropagation()
+        onPointClick(position)
+    }
 
-    return null // This component doesn't render anything visually
+    return (
+        <group position={position}>
+            {/* Main clickable sphere */}
+            <mesh onClick={handleClick} onPointerOver={() => setHovered(true)} onPointerOut={() => setHovered(false)}>
+                <sphereGeometry args={[1, 16, 16]} />
+                <meshStandardMaterial
+                    color={hovered ? "#ffffff" : color}
+                    emissive={hovered ? color : "#000000"}
+                    emissiveIntensity={hovered ? 0.4 : 0.2}
+                    transparent
+                    opacity={0.9}
+                />
+            </mesh>
+
+            {/* Pulsing ring effect */}
+            {/* <mesh rotation={[Math.PI / 2, 0, 0]}>
+                <ringGeometry args={[1.5, 2, 16]} />
+                <meshBasicMaterial color={color} transparent opacity={hovered ? 0.8 : 0.4} />
+            </mesh> */}
+
+            {/* Label text when hovered */}
+            {/* {hovered && (
+                <mesh position={[0, 3, 0]}>
+                    <planeGeometry args={[6, 1.5]} />
+                    <meshBasicMaterial color="#000000" transparent opacity={0.8} />
+                </mesh>
+            )} */}
+        </group>
+    )
 }
 
-function Model({ onModelClick }) {
+function Model() {
     const { scene } = useGLTF("/models/mansion/scene.gltf")
 
     useEffect(() => {
@@ -144,17 +152,23 @@ function Model({ onModelClick }) {
                 if (child.isMesh) {
                     child.castShadow = true
                     child.receiveShadow = true
+
                     if (child.material) {
                         // Ensure materials use sRGB color space for textures
                         if (child.material.map) {
                             child.material.map.colorSpace = THREE.SRGBColorSpace
                         }
-                        // Make sure material is not too reflective or emissive
+
+                        // Adjust material properties
                         if (child.material.metalness !== undefined) {
-                            child.material.metalness = Math.min(child.material.metalness, 0.5)
+                            child.material.metalness = Math.min(child.material.metalness, 0.2)
                         }
                         if (child.material.roughness !== undefined) {
-                            child.material.roughness = Math.max(child.material.roughness, 0.3)
+                            child.material.roughness = Math.max(child.material.roughness, 0.6)
+                        }
+                        // Brighten the materials slightly
+                        if (child.material.color) {
+                            child.material.color.multiplyScalar(1.1)
                         }
                         child.material.needsUpdate = true
                     }
@@ -163,34 +177,22 @@ function Model({ onModelClick }) {
         }
     }, [scene])
 
-    const handleClick = (event) => {
-        event.stopPropagation()
-        // Get information about what was clicked
-        const clickedObject = event.object
-        const point = event.point
-        const face = event.face
-        console.log("Clicked object:", clickedObject)
-        console.log("Click position:", point)
-        console.log("Face normal:", face?.normal)
-        // Call the callback with useful information
-        // onModelClick([point.x, point.y, point.z]);
-    }
-
-    return <primitive object={scene} scale={1.3} position={[0, -0.55, 0]} onClick={handleClick} />
+    return <primitive object={scene} scale={1.3} position={[0, -0.55, 0]} />
 }
 
 export const AfterTheRain = () => {
-    const [cameraIndex, setCameraIndex] = useState(0)
-    const [cameraPosition, setCameraPosition] = useState(defaultCameraAngle)
+    const [currentCameraIndex, setCurrentCameraIndex] = useState(0)
+    const [cameraPosition, setCameraPosition] = useState({
+        position: cameraPoints[0].position,
+        lookAt: [0, 0, 0],
+    })
     const [initialAnimationComplete, setInitialAnimationComplete] = useState(false)
 
     // Track when initial animation should start
     useEffect(() => {
-        // Small delay to ensure everything is loaded
         const timer = setTimeout(() => {
             setInitialAnimationComplete(false)
         }, 100)
-
         return () => clearTimeout(timer)
     }, [])
 
@@ -199,34 +201,58 @@ export const AfterTheRain = () => {
         if (!initialAnimationComplete) {
             const timer = setTimeout(() => {
                 setInitialAnimationComplete(true)
-            }, 4200) // Slightly longer than animation duration
-
+            }, 3200) // Slightly longer than animation duration
             return () => clearTimeout(timer)
         }
     }, [initialAnimationComplete])
 
-    const handleNextCamera = () => {
-        setCameraIndex((prev) => (prev + 1) % cameraAngles.length)
-        setCameraPosition(cameraAngles[cameraIndex])
+    const handleSwitchCamera = () => {
+        const nextIndex = (currentCameraIndex + 1) % cameraPoints.length
+        setCurrentCameraIndex(nextIndex)
+        setCameraPosition({
+            position: cameraPoints[nextIndex].position,
+            lookAt: [0, 0, 0],
+        })
+    }
+
+    const handlePointClick = (pointPosition) => {
+        // Find the index of the clicked point
+        const clickedIndex = cameraPoints.findIndex(
+            (point) =>
+                point.position[0] === pointPosition[0] &&
+                point.position[1] === pointPosition[1] &&
+                point.position[2] === pointPosition[2],
+        )
+
+        if (clickedIndex !== -1) {
+            setCurrentCameraIndex(clickedIndex)
+        }
+
+        setCameraPosition({
+            position: pointPosition,
+            lookAt: [0, 0, 0],
+        })
     }
 
     return (
         <div className="w-full h-full relative">
             <button
-                onClick={handleNextCamera}
+                onClick={handleSwitchCamera}
                 style={{
                     position: "absolute",
                     zIndex: 1,
                     top: 10,
                     left: 10,
-                    padding: "8px 16px",
-                    backgroundColor: "rgba(255, 255, 255, 0.9)",
-                    border: "1px solid #ccc",
-                    borderRadius: "4px",
+                    padding: "12px 20px",
+                    backgroundColor: "rgba(255, 255, 255, 0.95)",
+                    border: "2px solid #333",
+                    borderRadius: "8px",
                     cursor: "pointer",
+                    fontWeight: "bold",
+                    fontSize: "14px",
                 }}
             >
-                Next Camera Angle
+                Switch to {cameraPoints[(currentCameraIndex + 1) % cameraPoints.length].label}
             </button>
 
             {/* Animation progress indicator */}
@@ -237,11 +263,12 @@ export const AfterTheRain = () => {
                         zIndex: 1,
                         top: 10,
                         right: 10,
-                        padding: "8px 16px",
-                        backgroundColor: "rgba(0, 0, 0, 0.7)",
+                        padding: "12px 20px",
+                        backgroundColor: "rgba(0, 0, 0, 0.8)",
                         color: "white",
-                        borderRadius: "4px",
+                        borderRadius: "8px",
                         fontSize: "14px",
+                        fontWeight: "bold",
                     }}
                 >
                     Camera rotating...
@@ -256,43 +283,66 @@ export const AfterTheRain = () => {
                     antialias: true,
                     outputColorSpace: THREE.SRGBColorSpace,
                 }}
-                dpr={[1, 1.5]}
-                camera={{ position: backStartingAngle.position, fov: 20 }}
+                dpr={[1, 2]}
+                camera={{
+                    position: wideAngleStart.position,
+                    fov: 25,
+                    near: 0.1,
+                    far: 1000,
+                }}
             >
                 <CameraController cameraPosition={cameraPosition} enableAnimation={!initialAnimationComplete} />
-                <CameraPositionLogger />
 
-                {/* Simple background color */}
-                <color attach="background" args={["#808080"]} />
+                {/* Background */}
+                <color attach="background" args={["#b8d4f0"]} />
 
-                {/* Basic lighting setup */}
-                <ambientLight intensity={1} />
+                {/* Lighting setup for brighter, more natural colors */}
+                <ambientLight intensity={1.2} color="#ffffff" />
                 <directionalLight
-                    position={[10, 10, 5]}
-                    intensity={2}
+                    position={[30, 60, 40]}
+                    intensity={2.2}
+                    color="#fff8dc"
                     castShadow
-                    shadow-mapSize-width={1024}
-                    shadow-mapSize-height={1024}
+                    shadow-mapSize-width={2048}
+                    shadow-mapSize-height={2048}
+                    shadow-camera-far={200}
+                    shadow-camera-left={-50}
+                    shadow-camera-right={50}
+                    shadow-camera-top={50}
+                    shadow-camera-bottom={-50}
                 />
+                {/* Additional fill light for natural lighting */}
+                <directionalLight position={[-20, 40, 30]} intensity={0.8} color="#e6f3ff" />
+                {/* Subtle rim light */}
+                <directionalLight position={[0, 20, -50]} intensity={0.6} color="#fff8dc" />
 
                 <Suspense fallback={null}>
-                    <Model
-                        onModelClick={(data) =>
-                            setCameraPosition((prevState) => ({
-                                ...prevState,
-                                position: data,
-                            }))
-                        }
-                    />
+                    <Model />
+
+                    {/* Render camera points */}
+                    {cameraPoints.map((point) => (
+                        <ClickablePoint
+                            key={point.id}
+                            position={point.position}
+                            color={point.color}
+                            label={point.label}
+                            onPointClick={handlePointClick}
+                        />
+                    ))}
                 </Suspense>
 
+                {/* OrbitControls with target set to center */}
                 <OrbitControls
+                    target={[0, 0, 0]} // Always target the center
                     enablePan={true}
                     enableZoom={true}
                     enableRotate={true}
                     enableDamping={true}
-                    dampingFactor={0.12}
+                    dampingFactor={0.05}
                     zoomToCursor={true}
+                    minDistance={20}
+                    maxDistance={200}
+                    maxPolarAngle={Math.PI * 0.75} // Prevent camera from going below ground
                     enabled={initialAnimationComplete} // Disable controls during animation
                 />
             </Canvas>
