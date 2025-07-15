@@ -1,26 +1,31 @@
 @import "tailwindcss";
+@import "./styles/customAntd.scss";
 
 :root {
-  --background: #ffffff;
+  --background: #faf7ed;
   --foreground: #171717;
+  --jv-red: #b8282e;
+  --jv-text-black: #3a3c5c;
+  --default-font-family: var(--font-noto-serif);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-noto-serif);
+  --color-jv-red: var(--jv-red);
+  --color-jv-text-black: var(--jv-text-black);
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* color: var(--foreground); */
+  font-family: var(--font-noto-serif);
 }
