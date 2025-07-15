@@ -29,3 +29,16 @@ body {
   /* color: var(--foreground); */
   font-family: var(--font-noto-serif);
 }
+
+@font-face {
+  font-family: 'Ganesh';
+  src: url('/fonts/Aakriti.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'ARAP';
+  src: url('/fonts/ARAP002.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
