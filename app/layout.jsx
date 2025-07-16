@@ -3,7 +3,15 @@ import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConfigProvider } from "antd";
 
-const notoSerif = Noto_Serif_Devanagari({
+const notoSerifDevnagari = Noto_Serif_Devanagari({
+  variable: "--font-noto-serif-devnagari",
+  subsets: ["latin"],
+  weight: ['300', '400', '500', '600', '700'],
+  preload: true,
+  display: "swap",
+});
+
+const notoSerif = Noto_Serif({
   variable: "--font-noto-serif",
   subsets: ["latin"],
   weight: ['300', '400', '500', '600', '700'],
@@ -20,11 +28,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${notoSerif.variable} antialiased`}>
+        className={`${notoSerifDevnagari.className} antialiased`}>
         <AntdRegistry>
           <ConfigProvider theme={{
             token: {
-              fontFamily: 'var(--font-noto-serif)',
+              fontFamily: 'var(--font-noto-devnagari)',
             },
             components: {
               Button: {
