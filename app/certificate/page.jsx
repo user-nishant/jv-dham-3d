@@ -8,9 +8,10 @@ import Membership from "@/app/components/certificates/membership";
 
 function Page(props) {
     const {
-        name= "Bishnu Kumar Lama",
+        name= "बिष्णु कुमार लामा",
         amount = 1105020125,
-        type= 'MEMBERSHIP',
+        type= 'CONTRIBUTION',
+        date = new Date()
 
     } =  {};
     const contentRef = useRef(null);
@@ -88,9 +89,9 @@ function Page(props) {
             {(()=>{
                 switch (type){
                     case 'CONTRIBUTION':
-                        return <Contribution name={name} amount={amount}></Contribution>
+                        return <Contribution name={name} date={date} amount={amount}></Contribution>
                     case 'MEMBERSHIP':
-                        return <Membership name={name} amount={amount}></Membership>
+                        return <Membership name={name} date={date} amount={amount}></Membership>
                 }
             })()}
         </div>

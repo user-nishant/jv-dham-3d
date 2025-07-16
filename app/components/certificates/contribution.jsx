@@ -3,8 +3,9 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import convert from "number-to-nepali-words";
 import {convertToNepaliNumber} from "@/utils/commonFunctions";
+import NepaliDate from "nepali-date-converter";
 
-function Contribution({name = '', amount= 0, }) {
+function Contribution({name = '', amount= 0, date= new Date()}) {
     const contentRef = useRef(null);
 
     const styles = {
@@ -223,7 +224,11 @@ function Contribution({name = '', amount= 0, }) {
                                 ...styles?.paragraph,
                                 fontSize: '15pt',
                                 whiteSpace: 'pre'
-                            }}>{"ldltM     ÷   ÷ "}</p>
+                            }}>{"ldltM"}<span style={{
+                                fontFamily: "Noto Serif Devanagari",
+                                fontSize: '13pt',
+                                fontWeight: 700
+                            }}>  {new NepaliDate(date)?.format('YYYY/MM/DD', 'np')}</span></p>
                         </div>
                     </div>
                 </div>

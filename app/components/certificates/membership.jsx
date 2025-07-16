@@ -3,8 +3,9 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import convert from "number-to-nepali-words";
 import {convertToNepaliNumber} from "@/utils/commonFunctions";
+import NepaliDate from 'nepali-date-converter';
 
-function Membership({name = '', amount= 0, }) {
+function Membership({name = '', amount= 0, date = new Date()}) {
     const contentRef = useRef(null);
 
     const styles = {
@@ -215,13 +216,17 @@ function Membership({name = '', amount= 0, }) {
                                 margin: 0
                             }}>{";b:otf–kq k|bfg ub{5f}F . "}</p>
                         </div>
-                        <div style={{marginTop: '8mm', textAlign: 'center'}}>
+                        <div style={{marginTop: '5mm', textAlign: 'center'}}>
                             <p style={{
                                 ...styles?.paragraph,
                                 letterSpacing: '0.16pt'
                             }}>{"cfufdL lbgx¿df klg cWofTd / dfgj sNof0fsf nflu oxfFsf] ;dk{0f cem ulx/f] / cljl5Gg"}</p>
+                            <p style={{
+                                ...styles?.paragraph,
+                                letterSpacing: '0.16pt'
+                            }}>{"alg/xf];\\ eGg] z'e]R5f JoQm ub{5f}F ."}</p>
                         </div>
-                        <div style={{marginTop: '12mm', marginBottom: 0, lineHeight: 1, textAlign: 'center'}}>
+                        <div style={{marginTop: '10mm', marginBottom: 0, lineHeight: 1, textAlign: 'center'}}>
                             <p style={{
                                 ...styles?.paragraph,
                                 fontFamily: 'Ganesh'
@@ -238,7 +243,7 @@ function Membership({name = '', amount= 0, }) {
                                 ...styles?.paragraph,
                                 fontSize: '15pt',
                                 whiteSpace: 'pre'
-                            }}>{"ldltM     ÷   ÷ "}</p>
+                            }}>{"ldltM"}<span style={{fontFamily: "Noto Serif Devanagari", fontSize: '13pt', fontWeight: 700}}>  {new NepaliDate(date)?.format('YYYY/MM/DD','np')}</span></p>
                         </div>
                     </div>
                 </div>
