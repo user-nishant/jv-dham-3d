@@ -76,7 +76,7 @@ function Membership({name = '', amount= 0, date = new Date()}) {
     const downloadPDF = async () => {
         const content = contentRef.current;
 
-        const mmToPt = mm => mm * 2.83465;
+        const mmToPt = mm => mm * 2.8346456693;
         const widthPt = mmToPt(303);
         const heightPt = mmToPt(216);
 
@@ -128,7 +128,7 @@ function Membership({name = '', amount= 0, date = new Date()}) {
                     <div className="page" style={styles.page}>
 
                         <div style={{position: 'relative', margin: 0, lineHeight: 1}}>
-                            <p style={{...styles?.heading}}>
+                            <p style={{...styles?.heading, margin: 0}}>
                                 {
                                     ">L ========================================================================="
                                 }</p>
@@ -138,11 +138,13 @@ function Membership({name = '', amount= 0, date = new Date()}) {
                                 position: 'absolute',
                                 left: '20mm',
                                 top: '-2mm',
+                                margin: 0,
+                                fontSize: '19pt'
                             }}>{name}</p>
                         </div>
 
 
-                        <div style={{marginTop: '5mm', textAlign: 'center'}}>
+                        <div style={{marginTop: '4mm', textAlign: 'center', marginBottom:0,}}>
                             <p style={{...styles?.paragraph,
                                 letterSpacing: '-0.32pt'
                             }}>{"hLjg lj1fg k|lti7fgåf/f wflbª lhNnfsf] yfqm]–& df lgdf{0ffwLg hLjg lj1fg wfd -cGt/f{li6«o Wofg "}</p>
@@ -175,7 +177,7 @@ function Membership({name = '', amount= 0, date = new Date()}) {
                             </div>
                         </div>
 
-                        <div style={{marginTop: '5mm', textAlign: 'center'}}>
+                        <div style={{marginTop: '5mm', textAlign: 'center', marginBottom:0,}}>
                             {/*                           <div style={{position: 'relative'}}>
                                 <p style={{...styles?.paragraph}}>{"o; kljq cleofgdf tkfO{+n] pRr r]tgf;lxt ;]jfefjn] k|]l/t eO{ ?=========================================="}</p>
                                 <p style={{
@@ -216,7 +218,7 @@ function Membership({name = '', amount= 0, date = new Date()}) {
                                 margin: 0
                             }}>{";b:otf–kq k|bfg ub{5f}F . "}</p>
                         </div>
-                        <div style={{marginTop: '5mm', textAlign: 'center'}}>
+                        <div style={{marginTop: '6mm', textAlign: 'center', marginBottom:0,}}>
                             <p style={{
                                 ...styles?.paragraph,
                                 letterSpacing: '0.16pt'
@@ -226,7 +228,19 @@ function Membership({name = '', amount= 0, date = new Date()}) {
                                 letterSpacing: '0.16pt'
                             }}>{"alg/xf];\\ eGg] z'e]R5f JoQm ub{5f}F ."}</p>
                         </div>
-                        <div style={{marginTop: '10mm', marginBottom: 0, lineHeight: 1, textAlign: 'center'}}>
+                        <div style={{marginTop: '10mm', marginBottom: 0, lineHeight: 1, textAlign: 'center',position: 'relative', }}>
+                            <div style={{
+                                position: 'absolute',
+                                display: 'flex',
+                                margin: 0,
+                                justifyContent: 'center',
+                                top: '-35pt',
+                                width: '100%',
+                                textAlign: 'center'
+                            }}>
+                                <img style={{width: '60pt', margin: 0}} alt='sign' src='/assets/signature.png'></img>
+
+                            </div>
                             <p style={{
                                 ...styles?.paragraph,
                                 fontFamily: 'Ganesh'
@@ -243,7 +257,11 @@ function Membership({name = '', amount= 0, date = new Date()}) {
                                 ...styles?.paragraph,
                                 fontSize: '15pt',
                                 whiteSpace: 'pre'
-                            }}>{"ldltM"}<span style={{fontFamily: "Noto Serif Devanagari", fontSize: '13pt', fontWeight: 700}}>  {new NepaliDate(date)?.format('YYYY/MM/DD','np')}</span></p>
+                            }}>{"ldltM"}<span style={{
+                                fontFamily: "Noto Serif Devanagari",
+                                fontSize: '13pt',
+                                fontWeight: 700
+                            }}>  {new NepaliDate(date)?.format('YYYY/MM/DD', 'np')}</span></p>
                         </div>
                     </div>
                 </div>

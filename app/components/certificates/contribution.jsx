@@ -27,8 +27,8 @@ function Contribution({name = '', amount= 0, date= new Date()}) {
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-            marginBottom: '15px',
             position: "relative",
+            margin: 0
 
         },
         downloadButton: {
@@ -76,7 +76,7 @@ function Contribution({name = '', amount= 0, date= new Date()}) {
     const downloadPDF = async () => {
         const content = contentRef.current;
 
-        const mmToPt = mm => mm * 2.83465;
+        const mmToPt = mm => mm * 2.8346456693;
         const widthPt = mmToPt(303);
         const heightPt = mmToPt(216);
 
@@ -127,8 +127,8 @@ function Contribution({name = '', amount= 0, date= new Date()}) {
                 <div ref={contentRef} style={styles.container}>
                     <div className="page" style={styles.page}>
 
-                        <div style={{position: 'relative', margin: 0, lineHeight: 1}}>
-                            <p style={{...styles?.heading, marginLeft: '0.8mm'}}>
+                        <div style={{position: 'relative', margin: 0, lineHeight: 1, marginBottom:0,}}>
+                            <p style={{...styles?.heading, marginLeft: '0.8mm',marginTop: '0'}}>
                                 {
                                     ">L ========================================================================="
                                 }</p>
@@ -138,11 +138,11 @@ function Contribution({name = '', amount= 0, date= new Date()}) {
                                 position: 'absolute',
                                 left: '20mm',
                                 top: '-2mm',
+                                margin: 0,
+                                fontSize: '19pt'
                             }}>{name}</p>
                         </div>
-
-
-                        <div style={{marginTop: '3.4mm', textAlign: 'center'}}>
+                        <div style={{marginTop: '3.4mm', textAlign: 'center', marginBottom:0,}}>
                             <p style={{...styles?.paragraph}}>{"cWofTdnfO{ hLjgz}nLsf] d\"n cfwf/ agfO{ /fi6« / ;du| ljZjsf] ;'v, zflGt Pj+ ;d[l4df of]ubfg "}</p>
                             <p style={{
                                 ...styles?.paragraph,
@@ -157,8 +157,7 @@ function Contribution({name = '', amount= 0, date= new Date()}) {
                                 letterSpacing: '-0.4pt'
                             }}>{"k|d'v uGtJosf ¿kdf :yflkt ug{' xf] . o;sf nflu wflbª lhNnfsf] yfqm]–& df wfd lgdf{0ffwLg 5 .  "}</p>
                         </div>
-
-                        <div style={{marginTop: '3.4mm', textAlign: 'center'}}>
+                        <div style={{marginTop: '3.4mm', textAlign: 'center', marginBottom:0,}}>
                             <div style={{position: 'relative'}}>
                                 <p style={{...styles?.paragraph}}>{"o; kljq cleofgdf tkfO{+n] pRr r]tgf;lxt ;]jfefjn] k|]l/t eO{ ?=========================================="}</p>
                                 <p style={{
@@ -200,23 +199,29 @@ function Contribution({name = '', amount= 0, date= new Date()}) {
                                 margin: 0
                             }}>{"gofF pmhf{ k|bfg u/]sf] 5 / cfWoflTds r]tgfsf] pHofnf] km}nfpg] sfo{sf lglDt k|]/0ffsf] ;|f]t ag]sf] 5 ."}</p>
                         </div>
-                        <div style={{marginTop: '3.4mm', textAlign: 'center'}}>
+                        <div style={{marginTop: '3.4mm', marginBottom:0, textAlign: 'center'}}>
                             <p style={{...styles?.paragraph}}>{"tkfO{+k|lt pRr >4f, ;Ddfg / cfef/ JoQm ub{}, cfufdL lbgx¿df klg cfWoflTds ofqf / dfgj"}</p>
                             <p style={{
                                 ...styles?.paragraph,
                                 letterSpacing: '-0.288pt'
                             }}>{"sNof0fsf] ;]jfdf oxfFsf] ;dk{0f cem ulx/f], cljl5Gg / kmnbfoL alg/xf];\\ eGg] z'e]R5f JoQm ub{5f}F ."}</p>
                         </div>
-                        <div style={{marginTop: '12mm', marginBottom: 0, lineHeight: 1, textAlign: 'center'}}>
+                        <div style={{marginTop: '12mm', marginBottom: 0, lineHeight: 1, textAlign: 'center', position: 'relative'}}>
+                            <div style={{position: 'absolute', display: 'flex', margin:0, justifyContent:'center', top: '-35pt', width: '100%', textAlign: 'center'}}>
+                                <img style={{ width: '60pt', margin:0}} alt='sign' src='/assets/signature.png'></img>
+
+                            </div>
                             <p style={{
                                 ...styles?.paragraph,
-                                fontFamily: 'Ganesh'
+                                fontFamily: 'Ganesh',
+                                margin:0
                             }}>{"======================================="}</p>
                             <p style={{
                                 ...styles?.paragraph,
                                 fontFamily: 'Ganesh',
                                 fontSize: '18pt',
-                                lineHeight: '1.2'
+                                lineHeight: '1.2',
+                                margin:0
                             }}>{"b]jL zdf{"}</p>
                             <p style={{...styles?.paragraph, fontSize: '15pt'}}>{"u'?s'n ;+/−s"}</p>
                             <p style={{...styles?.paragraph, fontSize: '15pt'}}>{"hLjg lj1fg"}</p>
