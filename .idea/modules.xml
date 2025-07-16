@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/jv-dham.iml" filepath="$PROJECT_DIR$/.idea/jv-dham.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/next-3d-render-js.iml" filepath="$PROJECT_DIR$/.idea/next-3d-render-js.iml" />
     </modules>
   </component>
 </project>
