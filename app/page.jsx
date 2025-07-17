@@ -487,7 +487,7 @@ export default function Home() {
 
                         {/*dham architecture section*/}
                         <section
-                            className={"z-1 relative px-[150px] py-[60px] before::content-none before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-[0.2] before:bg-[url('/assets/dham_architecture_bg.png')] before:-z-1 before:bg-cover bg-no-repeat"}>
+                            className={"z-1 relative px-[150px] py-[60px] before::content-none before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-[0.2] before:bg-[url('/assets/dham_architecture_bg.png')] before:-z-1 before:bg-cover before:bg-no-repeat"}>
                             <div className={"w-1/2"}>
                                 <div className={"flex flex-col gap-[20px]"}>
                                     <svg width="40" height="24" className={"w-[40px] h-[24px]"} viewBox="0 0 40 24"

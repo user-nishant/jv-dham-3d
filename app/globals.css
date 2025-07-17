@@ -42,3 +42,41 @@ body {
 /* h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 } */
+
+
+.ant-collapse{
+  background: transparent !important;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+
+  .ant-collapse-item {
+    height: max-content;
+      /*margin-bottom: 20px !important;*/
+      border: 1px solid #D9B950 !important;
+      /*border-image-source: linear-gradient(180deg, #D9B950 0%, #F5E784 35.1%, #D0AA46 73.56%, #E8C25D 100%);*/
+      /*border-image-slice: 1; !* Required to make the gradient apply *!*/
+      .ant-collapse-header{
+        padding: 0;
+        .ant-collapse-expand-icon{
+          margin-top: 5px;
+        }
+      }
+
+
+    }
+    .ant-collapse-header {
+        color: var(--foreground);
+        font-weight: 600;
+    }
+    .ant-collapse-content {
+      margin-top: 14px;
+        color: var(--foreground);
+      .ant-collapse-content-box{
+        padding: 0 !important;
+      }
+    }
+}
+.ant-collapse>.ant-collapse-item>.ant-collapse-header{
+  padding: 0 !important;
+}
