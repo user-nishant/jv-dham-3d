@@ -31,7 +31,7 @@ const contactDetails = {
 
 const Footer = () => {
     return (
-        <footer className="relative before::content-none before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-[0.5] before:bg-[url('/assets/footer_bg.png')] before:bg-cover before:bg-center before:bg-no-repeat">
+        <footer className="relative bg-[url('/assets/footer_bg.png')] bg-cover">
             {/* participation section */}
             <section className="px-[150px] pt-[60px] pb-[100px] relative">
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2">

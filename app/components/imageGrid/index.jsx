@@ -7,7 +7,7 @@ const ImageGrid = () => {
         <section>
             <Image.PreviewGroup>
                 <Masonry sequential columnsCount={3} gutter="10px">
-                    <Image src="/assets/dham-images/dham0.jpg" alt="dham-0" />
+                    <Image src="/assets/dham-images/dham0.jpg" className="!border-2 !border-transparent hover:!border-2 hover:!border-[#D2B14A]" alt="dham-0" />
                     <Image src="/assets/dham-images/dham1.jpg" alt="dham-1" />
                     <Image src="/assets/dham-images/dham2.png" alt="dham-2" />
                     <Image src="/assets/dham-images/dham3.jpg" alt="dham-3" />
