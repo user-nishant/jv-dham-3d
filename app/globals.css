@@ -26,6 +26,9 @@
   --color-gold-gradient: var(--gold-gradient);
 }
 
+
+
+
 /* @media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
@@ -47,8 +50,14 @@ body {
 .ant-collapse{
   background: transparent !important;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  height: max-content;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 30px;
+  @media only screen and (min-width: 200px) and (max-width: 576px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 24px;
+
+  }
 
   .ant-collapse-item {
     height: max-content;
@@ -261,4 +270,12 @@ body {
     }
   }
 }
+
+/* .header-text {
+font-size: 36px;
+
+  @media only screen and (min-width: 200px) and (max-width: 768px) {
+    font-size: 20px;
+  }
+} */
 

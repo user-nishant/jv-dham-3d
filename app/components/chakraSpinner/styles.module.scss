@@ -6,7 +6,7 @@
 
   .spinPath {
     width: calc(100vw + 100px);
-    height: 100vw;
+    height: calc(100vw + 100px);
     border-radius: 50%;
     background-image: linear-gradient(to top, #ffffff, #ffebc3);
     position: absolute;
@@ -15,7 +15,7 @@
 
     .itemContent {
       position: absolute;
-      top: calc(50% - 25px);
+      top: calc(50% - 60px);
       left: calc(50% - 60px);
       //   width: px2vwL(120);
       //   height: px2vwL(50);

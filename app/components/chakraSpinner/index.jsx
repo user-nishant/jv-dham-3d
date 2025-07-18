@@ -213,6 +213,24 @@ const chakraList = [
 ]
 
 const ChakraSpinner = () => {
+    const getElementPosition = (index, total) => {
+        // Angle range for semicircle (180 degrees in radians)
+        const angleRange = Math.PI
+        // Start angle (to center the semicircle)
+        const startAngle = 0
+        // Calculate angle for this element
+        const angle = startAngle + (angleRange * index) / (total - 1)
+
+        // Radius of the semicircle (adjust based on container size)
+        const radius = (window.innerWidth + 100) / 4
+
+        // Calculate x and y positions
+        const x = 50 + (radius * Math.cos(angle)) / 8 // Convert to percentage and scale
+        const y = 60 - (radius * Math.sin(angle)) / 10 // Convert to percentage and scale
+
+        return { x: `${x}%`, y: `${y}%` }
+    }
+
     return (
         <div
             className={styles.spinnerContainer}>
@@ -231,6 +249,28 @@ const ChakraSpinner = () => {
                     </div>
                 ))}
             </div>
+            {/* <div className={styles.spinPath}> */}
+            {/* <div className="">
+                {chakraList.map((item, index) => {
+                    const position = getElementPosition(index, chakraList.length)
+
+                    return (
+                        <div
+                            key={index}
+                            className="absolute transform -translate-x-1/2 -translate-y-1/2"
+                            style={{
+                                left: position.x,
+                                top: position.y,
+                            }}
+                        >
+                            <ChakraCard icon={item.icon}
+                                label={item.label}
+                                color={item.color} />
+                        </div>
+                    )
+                })}
+            </div> */}
+            {/* </div> */}
         </div>
     )
 }

@@ -37,7 +37,7 @@ const Footer = ({showFullSection = true}) => {
             {
                 showFullSection &&
                 <>
-                    <section className="px-[150px] pt-[60px] pb-[100px] relative">
+                    <section className="px-[150px] max-md:px-[20px] pt-[60px] pb-[100px] relative">
                         <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
                             <div className="w-[358px] h-[226px] relative">
                                 <Image fill alt="lotus" src={'/assets/lotus.png'}/>
@@ -99,9 +99,10 @@ const Footer = ({showFullSection = true}) => {
                         </div>
 
                         <div className="mt-[42px]">
-                            <div className="w-full grid grid-cols-3 gap-[40px] relative text-center">
+                            <div className="w-full grid grid-cols-3 max-sm:grid-cols-1 gap-[40px] max-sm:gap-0 relative text-center">
 
-                                <div className='col-span-3 absolute w-full h-full flex justify-evenly items-center '>
+                                <div
+                                    className='col-span-3 absolute max-sm:hidden w-full h-full flex justify-evenly items-center '>
                                     <div
                                         className="w-[10px] h-[10px] bg-[#B8282E] rounded-full"></div>
                                     <div
@@ -110,7 +111,7 @@ const Footer = ({showFullSection = true}) => {
                                 </div>
                                 {contribution.map(item => (
                                     <article key={item.key}
-                                             className="py-[20px] px-[26px] gap-[20px] flex items-center justify-center flex-col">
+                                             className="py-[20px] px-[26px] max-sm:p-0 gap-[20px] flex items-center justify-center flex-col">
                                         <div className="w-[48px] h-[48px] relative ">
                                             <Image fill
                                                    src={item.icon}
@@ -131,7 +132,9 @@ const Footer = ({showFullSection = true}) => {
                         </div>
 
                         <div className="mt-[30px] flex items-center justify-center">
-                            <Button className="!text-jv-red" icon={(
+                        <Button className="!text-jv-red max-md:!text-[14px]"
+                                href='/faq'
+                                icon={(
                                 <svg width="24" height="24" className="w-[24px] h-[24px]" viewBox="0 0 24 24"
                                      fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -148,15 +151,15 @@ const Footer = ({showFullSection = true}) => {
                 </>
             }
             <section
-                className="px-[150px] pt-[21px] pb-[23px] bg-[url('/assets/decorative_bg.png')] relative z-[1]">
+                className="px-[150px] max-md:px-[20px] pt-[21px] pb-[23px] bg-[url('/assets/decorative_bg.png')] relative z-[1]">
                 <div className="flex items-center justify-between">
-                    <p className="text-[20px] leading-relaxed font-medium text-white w-[70%]">
+                    <p className="text-[20px] leading-relaxed font-medium text-white w-full text-center">
                         मानव समाजको उन्नति, प्रगति र अभ्युदयका साथ आध्यात्मिक जागरण ल्याउने, हरेकको जीवनलाई
                         मूल्यवान र सार्थक बनाउने तथा लोककल्याणका सत्कृत्यहरू प्रवर्धन गर्ने यस महान अभियानमा
                         तपाईँ पनि सहभागी बन्न सक्नुहुनेछ |
                     </p>
 
-                    <Button className="!text-jv-red" icon={(
+                    <Button className="!text-jv-red !hidden" icon={(
                         <svg width="24" height="24" className="w-[24px] h-[24px]" viewBox="0 0 24 24"
                              fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -170,7 +173,7 @@ const Footer = ({showFullSection = true}) => {
                 </div>
             </section>
 
-            <section className="px-[150px] pt-[0px] pb-[36px] relative">
+            <section className="px-[150px] max-md:px-[20px] pt-[0px] pb-[36px] relative">
                 <div className='w-full relative'>
                     <div className='w-full absolute flex justify-center'>
                         <img src='/assets/footer.png' className='w-[408px]'/>
@@ -182,7 +185,7 @@ const Footer = ({showFullSection = true}) => {
 
 
                 <div className="mt-[85px]">
-                    <div className="flex items-center gap-[72px]">
+                    <div className="flex items-center max-md:flex-col max-md:items-start max-md:flex-wrap  max-md:gap-[10px] gap-[68px]">
                         <ContactCard icon={(
                             <svg width="36" height="36" className="w-[36px] h-[36px]" viewBox="0 0 36 36" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -203,7 +206,7 @@ const Footer = ({showFullSection = true}) => {
                         )}>
                             <p className="text-[16px] leading-[24px] text-jv-text-black">
                                 Contact Information: <br/>
-                                <span className="whitespace-nowrap">
+                                <span className="whitespace-nowrap max-md:whitespace-pre-wrap">
                                     {contactDetails.phoneNumber.join(' / ')}
                                 </span>
                             </p>
@@ -239,7 +242,7 @@ const Footer = ({showFullSection = true}) => {
                                     stroke="#B8282E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                         )}>
-                            <p className="text-[16px] leading-[24px] text-jv-text-black">
+                            <p className="text-[16px] leading-[24px] text-jv-text-black w-[300px] max-md:w-auto max-md:whitespace-pre-wrap tracking-normal">
                                 {contactDetails.location}
                             </p>
                         </ContactCard>
@@ -248,9 +251,9 @@ const Footer = ({showFullSection = true}) => {
             </section>
 
             <section
-                className="px-[150px] pt-[21px] pb-[23px] bg-[url('/assets/decorative_bg.png')] relative z-[1] flex items-center justify-between">
-            <h5 className="text-[14px] leading-[24px] text-white">
-                    ©️ Copyright Jeevan Vigyan Dham 2025 . All rights reserved
+                className="px-[150px] max-md:px-[20px] pt-[21px] pb-[23px] bg-[url('/assets/decorative_bg.png')] max-sm:bg-[#B8282E] max-sm:bg-none relative z-[1] flex items-center max-sm:flex-col max-sm:gap-[10px] justify-between">
+            <h5 className="text-[14px] leading-[24px] text-white max-sm:w-[320px] max-sm:text-center">
+                &copy; Copyright Jeevan Vigyan Dham 2025 . All rights reserved
                 </h5>
 
                 <h5 className="text-[14px] leading-[24px] text-white">
