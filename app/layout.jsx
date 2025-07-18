@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
             components: {
               Button: {
                 colorPrimary: 'var(--jv-red)',
-                colorPrimaryHover: 'rgba(184, 40, 46, 0.8)',
+                colorPrimaryHover: 'linear-gradient(to right,#DCB967,#C9A858,#EDD56E,#E1BD59)',
                 fontWeight: 700
               }
             }
