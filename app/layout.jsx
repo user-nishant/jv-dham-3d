@@ -1,10 +1,18 @@
-import { Noto_Serif, Noto_Serif_Devanagari } from "next/font/google";
+import { Noto_Sans, Noto_Serif, Noto_Serif_Devanagari, Poppins } from "next/font/google";
 import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConfigProvider } from "antd";
 
 const notoSerifDevnagari = Noto_Serif_Devanagari({
   variable: "--font-noto-serif-devnagari",
+  subsets: ["latin"],
+  weight: ['300', '400', '500', '600', '700'],
+  preload: true,
+  display: "swap",
+});
+
+const notoSans = Noto_Sans({
+  variable: "--font-noto-sans",
   subsets: ["latin"],
   weight: ['300', '400', '500', '600', '700'],
   preload: true,
@@ -32,13 +40,14 @@ export default function RootLayout({ children }) {
         <AntdRegistry>
           <ConfigProvider theme={{
             token: {
-              fontFamily: 'var(--font-noto-devnagari)',
+              fontFamily: 'Noto Serif Devnagari',
             },
             components: {
               Button: {
                 colorPrimary: 'var(--jv-red)',
                 colorPrimaryHover: 'linear-gradient(to right,#DCB967,#C9A858,#EDD56E,#E1BD59)',
-                fontWeight: 700
+                fontWeight: 700,
+                // fontFamily: 'var(--font-noto-devnagari)',
               }
             }
           }}>
