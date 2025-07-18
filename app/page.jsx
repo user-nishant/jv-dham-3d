@@ -6,8 +6,9 @@ import Footer from "./components/footer";
 import Header from "./components/header";
 import { ImageCarousel } from "./components/imageCarousel";
 import ImageGrid from "./components/imageGrid";
-import ParallaxHero from "./components/parallexHero";
+import ParallaxHero from "./components/parallaxHero";
 import DhamVideo from "./components/dhamVideo";
+import { FaArrowRight } from "react-icons/fa";
 
 const features = [
     { "key": "1", "label": "पार्किङ" },
@@ -341,9 +342,20 @@ export default function Home() {
 
                             <div
                                 className={"grow-0 shrink-0 basis-[640px] h-[355px] rounded-[20px] border border-[#D9B950] relative mt-[80px]"}>
-                                <div className={"absolute -top-[18%] -left-[6.5%] z-1 animate-[spin_10s_linear_infinite]"}>
+                                <div className={"absolute -top-[18%] -left-[6.5%] z-1 flex items-center justify-center"}>
                                     <div className={"w-[155px] h-[155px] relative"}>
-                                        <Image fill src={"/assets/jv_organization.png"} alt={"jv-organization"} />
+                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-1">
+                                            <div className="w-[27px] h-[42px] relative">
+                                                <Image fill
+                                                    src={"/assets/jv.png"}
+                                                    alt={"jv-organization"} />
+                                            </div>
+                                        </div>
+
+                                        <Image fill
+                                            src={"/assets/jv_organization.svg"}
+                                            className="animate-[spin_20s_linear_infinite]"
+                                            alt={"jv-organization"} />
                                     </div>
                                 </div>
 
@@ -362,16 +374,21 @@ export default function Home() {
                         <div
                             className={"h-[91px] px-[150px] flex items-center bg-[url('/assets/decorative_bg.png')] bg-cover bg-no-repeat bg-center -mx-[150px] -mt-[10%]"}>
                             <Link href={"https://jeevanvigyan.org"}
-                                className={"text-[20px] leading-[27px] text-white"}
                                 target={'_blank'}>
-                                Visit Jeevan Vigyan website →
+                                <div className="flex items-center gap-[5px] text-[20px] leading-[1.3] text-white before::content-none before:table before:mb-[calc(-0.5lh+0.34em)] after::content-none after:table after:mb-[calc(-0.5lh+0.3em)]">
+                                    <span className="">
+                                        Visit Jeevan Vigyan website
+                                    </span>
+
+                                    <FaArrowRight />
+                                </div>
                             </Link>
                         </div>
                     </div>
-                </section>
+                </section >
 
                 {/*jv goals section*/}
-                <section className={"flex flex-col relative bg-background"}>
+                <section section className={"flex flex-col relative bg-background"}>
                     <div className={"bg-[url('/assets/decorative_bg.png')] absolute bottom-0 left-0 w-full h-[345px]"}>
 
                     </div>
@@ -434,11 +451,13 @@ export default function Home() {
                                 झल्किने वास्तुकलामा आधारित अत्याधुनिक संरचना तयार हुँदैछ। जीवन विज्ञान धामका लक्ष्यहरूः
                             </p>
 
-                            <div className={"grid grid-cols-2 items-center justify-center gap-[35px]"}>
+                            <div className={"flex items-center justify-center flex-wrap gap-[35px]"}>
                                 {goalList.map(item => (
-                                    <GoalCard key={item.key}
-                                        label={item.label}
-                                        icon={item.icon} />
+                                    <div key={item.key} className="basis-[48%] max-w-[60%] shrink grow">
+                                        <GoalCard
+                                            label={item.label}
+                                            icon={item.icon} />
+                                    </div>
                                 ))}
                             </div>
                         </div>
@@ -446,161 +465,170 @@ export default function Home() {
 
                     <div className={"px-[150px] pb-[72px]"}>
                         <div className={"w-full h-[640px] bg-amber-50 relative z-1"}>
-                            <video src="/assets/videos/dham.mp4" autoPlay loop playsInline className="w-full h-full" />
+                            <video autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="w-full h-full object-cover"
+                                src="/assets/videos/dham.mp4" />
                         </div>
                     </div>
                     {/* <DhamVideo></DhamVideo> */}
-                </section>
+                </section >
 
                 <section className="bg-white">
                     <section className={"flex flex-col gap-[16px] relative before::content-none before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-[0.5] before:bg-[url('/assets/dham_arch_bg.png')] before:bg-cover before:bg-center before:bg-no-repeat"}>
-                        <section className={"absolute -top-[161px] -right-[157px]"}>
-                            <div className={"w-[315px] h-[322px] relative animate-[spin_20s_linear_infinite] origin-center"}>
+                        <section className={"absolute -top-[161px] -right-[157px] flex items-center justify-center"}>
+                            <div className={"w-[315px] h-[322px] relative flex items-center justify-center"}>
                                 <Image fill
                                     src={"/assets/chakra_right_white.svg"}
                                     alt={"chakra"}
-                                    className="" />
+                                    className="animate-[spin_20s_linear_infinite]"
+                                    style={{ transformOrigin: "50% 50%" }} />
                             </div>
                         </section>
 
                         {/*dham architecture section*/}
                         <section
-                            className={"z-1 relative pl-[150px] py-[60px] flex items-center gap-[20px] before::content-none before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-[0.2] before:bg-[url('/assets/dham_architecture_bg.png')] before:-z-1 before:bg-cover bg-no-repeat"}>
-                            <div className={"flex-1"}>
-                                <div className={"flex flex-col gap-[20px]"}>
-                                    <svg width="40" height="24" className={"w-[40px] h-[24px]"} viewBox="0 0 40 24"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M18.4667 1.05122C17.5452 2.17497 15.6799 5.00682 15.4327 5.63612C15.3428 5.90582 15.6125 6.19799 16.3541 6.69244C17.3655 7.34422 18.9162 8.78261 19.6578 9.77151C19.9725 10.1761 20.0174 10.1985 20.2197 9.83894C20.7591 8.93994 21.703 7.99599 23.0515 7.05204C23.8381 6.49017 24.4898 5.88334 24.4898 5.72602C24.4898 5.34394 22.0401 1.65805 21.1636 0.714099C20.1747 -0.31975 19.5679 -0.252324 18.4667 1.05122Z"
-                                            fill="#B8282E" />
-                                        <path
-                                            d="M11.6584 1.65842C11.0516 1.95059 10.8043 3.18671 11.2538 3.72611C11.5685 4.10819 12.827 4.15314 13.2091 3.77106C13.5687 3.41146 13.5462 2.13039 13.2091 1.86069C12.6697 1.45614 12.1977 1.38872 11.6584 1.65842Z"
-                                            fill="#B8282E" />
-                                        <path
-                                            d="M27.2338 1.59124C25.8629 2.10817 26.2225 4.04102 27.7058 4.04102C28.6272 4.04102 28.9868 3.70389 28.9868 2.78242C28.9868 1.77104 28.2002 1.23164 27.2338 1.59124Z"
-                                            fill="#B8282E" />
-                                        <path
-                                            d="M4.82767 6.15283C4.46808 6.40005 4.44561 6.66975 4.55798 8.243C4.69282 10.1084 5.25468 12.9178 5.5918 13.4347C5.74912 13.6819 6.01881 13.6819 7.165 13.4572C7.90666 13.3223 9.30007 13.2549 10.244 13.2999L11.9296 13.4122L11.7947 11.8165C11.7273 10.7827 11.7722 9.70387 11.997 8.75992C12.1543 7.95083 12.2667 7.23163 12.2217 7.14173C12.0644 6.91698 8.33367 6.13035 6.71552 5.97303C5.65922 5.9056 5.09736 5.95055 4.82767 6.15283Z"
-                                            fill="#B8282E" />
-                                        <path
-                                            d="M32.3592 6.08605C31.4377 6.19842 30.0219 6.46812 29.2128 6.69287L27.752 7.09742L27.8643 7.86157C27.9317 8.2886 27.9767 9.70452 27.9767 11.0081V13.3679H30.2241C31.4602 13.3679 32.8986 13.4578 33.4155 13.5477L34.3369 13.7275L34.7864 11.7497C35.0561 10.6709 35.3258 9.05275 35.4157 8.17622C35.5281 6.8502 35.4831 6.53555 35.1685 6.2209C34.9662 6.01862 34.6291 5.8613 34.4268 5.8613C34.2246 5.88377 33.2806 5.97367 32.3592 6.08605Z"
-                                            fill="#B8282E" />
-                                        <path
-                                            d="M14.2891 8.80552C14.2217 9.0977 14.1543 10.0866 14.1543 11.0081C14.1543 12.8735 14.7611 14.5142 15.75 15.4132C16.3118 15.9301 17.7727 16.8516 17.9974 16.8516C18.3345 16.8516 18.6941 14.7389 18.5817 13.5702C18.4244 12.0194 17.6603 10.6934 16.1545 9.34492C14.8735 8.17622 14.4914 8.08632 14.2891 8.80552Z"
-                                            fill="#B8282E" />
-                                        <path
-                                            d="M24.0656 9.09692C22.9194 10.0184 21.9755 11.2545 21.5934 12.3333C21.2788 13.2997 21.2788 15.2101 21.5934 16.1316C21.8181 16.7609 21.8856 16.8058 22.4474 16.6036C23.3015 16.3114 24.7848 14.8505 25.2792 13.7942C25.9759 12.3333 26.0209 8.31029 25.3241 8.31029C25.1668 8.31029 24.605 8.66989 24.0656 9.09692Z"
-                                            fill="#B8282E" />
-                                        <path
-                                            d="M0.377666 12.7613C-0.453885 13.6603 0.175397 15.0537 1.41149 15.0537C2.04077 15.0537 2.69252 14.3345 2.69252 13.6603C2.69252 13.0984 1.88345 12.3567 1.27664 12.3567C0.984473 12.3567 0.579935 12.5365 0.377666 12.7613Z"
-                                            fill="#B8282E" />
-                                        <path
-                                            d="M37.6843 12.7613C36.8528 13.6603 37.482 15.0537 38.7181 15.0537C39.3474 15.0537 39.9992 14.3345 39.9992 13.6603C39.9992 13.0984 39.1901 12.3567 38.5833 12.3567C38.2911 12.3567 37.8866 12.5365 37.6843 12.7613Z"
-                                            fill="#B8282E" />
-                                        <path
-                                            d="M8.19637 15.615C8.08399 15.6599 7.70193 15.7498 7.34234 15.8172C6.78048 15.9521 6.75801 16.0195 6.98275 16.4465C7.38729 17.2107 9.25266 19.0986 9.92689 19.4582C11.0057 20.0201 12.7137 20.2448 13.9273 19.9751C14.5566 19.8403 15.096 19.638 15.1859 19.5256C15.3882 19.1885 14.2195 17.368 13.3655 16.7162C12.1519 15.7948 9.40998 15.2104 8.19637 15.615Z"
-                                            fill="#B8282E" />
-                                        <path
-                                            d="M28.1345 15.9073C26.831 16.3793 25.6623 17.3682 25.033 18.5593C24.5161 19.5033 24.7184 19.7505 26.1792 20.0202C28.6289 20.4697 31.0112 19.2785 32.7642 16.7164C33.2137 16.0421 33.2362 15.9972 32.8541 15.8399C31.8652 15.4578 29.3256 15.4803 28.1345 15.9073Z"
-                                            fill="#B8282E" />
-                                        <path
-                                            d="M18.7163 19.8856C18.0421 20.3575 17.8398 21.5487 18.2893 22.4252C19.368 24.4929 22.6268 22.9646 21.7953 20.7846C21.6604 20.425 21.3907 20.0204 21.166 19.8631C20.6491 19.4585 19.3006 19.481 18.7163 19.8856Z"
-                                            fill="#B8282E" />
-                                    </svg>
+                            className={"z-1 relative pl-[150px] py-[60px] flex flex-col gap-[30px] before::content-none before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-[0.2] before:bg-[url('/assets/dham_architecture_bg.png')] before:-z-1 before:bg-cover bg-no-repeat"}>
+                            <div className={"flex flex-col gap-[20px]"}>
+                                <svg width="40" height="24" className={"w-[40px] h-[24px]"} viewBox="0 0 40 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M18.4667 1.05122C17.5452 2.17497 15.6799 5.00682 15.4327 5.63612C15.3428 5.90582 15.6125 6.19799 16.3541 6.69244C17.3655 7.34422 18.9162 8.78261 19.6578 9.77151C19.9725 10.1761 20.0174 10.1985 20.2197 9.83894C20.7591 8.93994 21.703 7.99599 23.0515 7.05204C23.8381 6.49017 24.4898 5.88334 24.4898 5.72602C24.4898 5.34394 22.0401 1.65805 21.1636 0.714099C20.1747 -0.31975 19.5679 -0.252324 18.4667 1.05122Z"
+                                        fill="#B8282E" />
+                                    <path
+                                        d="M11.6584 1.65842C11.0516 1.95059 10.8043 3.18671 11.2538 3.72611C11.5685 4.10819 12.827 4.15314 13.2091 3.77106C13.5687 3.41146 13.5462 2.13039 13.2091 1.86069C12.6697 1.45614 12.1977 1.38872 11.6584 1.65842Z"
+                                        fill="#B8282E" />
+                                    <path
+                                        d="M27.2338 1.59124C25.8629 2.10817 26.2225 4.04102 27.7058 4.04102C28.6272 4.04102 28.9868 3.70389 28.9868 2.78242C28.9868 1.77104 28.2002 1.23164 27.2338 1.59124Z"
+                                        fill="#B8282E" />
+                                    <path
+                                        d="M4.82767 6.15283C4.46808 6.40005 4.44561 6.66975 4.55798 8.243C4.69282 10.1084 5.25468 12.9178 5.5918 13.4347C5.74912 13.6819 6.01881 13.6819 7.165 13.4572C7.90666 13.3223 9.30007 13.2549 10.244 13.2999L11.9296 13.4122L11.7947 11.8165C11.7273 10.7827 11.7722 9.70387 11.997 8.75992C12.1543 7.95083 12.2667 7.23163 12.2217 7.14173C12.0644 6.91698 8.33367 6.13035 6.71552 5.97303C5.65922 5.9056 5.09736 5.95055 4.82767 6.15283Z"
+                                        fill="#B8282E" />
+                                    <path
+                                        d="M32.3592 6.08605C31.4377 6.19842 30.0219 6.46812 29.2128 6.69287L27.752 7.09742L27.8643 7.86157C27.9317 8.2886 27.9767 9.70452 27.9767 11.0081V13.3679H30.2241C31.4602 13.3679 32.8986 13.4578 33.4155 13.5477L34.3369 13.7275L34.7864 11.7497C35.0561 10.6709 35.3258 9.05275 35.4157 8.17622C35.5281 6.8502 35.4831 6.53555 35.1685 6.2209C34.9662 6.01862 34.6291 5.8613 34.4268 5.8613C34.2246 5.88377 33.2806 5.97367 32.3592 6.08605Z"
+                                        fill="#B8282E" />
+                                    <path
+                                        d="M14.2891 8.80552C14.2217 9.0977 14.1543 10.0866 14.1543 11.0081C14.1543 12.8735 14.7611 14.5142 15.75 15.4132C16.3118 15.9301 17.7727 16.8516 17.9974 16.8516C18.3345 16.8516 18.6941 14.7389 18.5817 13.5702C18.4244 12.0194 17.6603 10.6934 16.1545 9.34492C14.8735 8.17622 14.4914 8.08632 14.2891 8.80552Z"
+                                        fill="#B8282E" />
+                                    <path
+                                        d="M24.0656 9.09692C22.9194 10.0184 21.9755 11.2545 21.5934 12.3333C21.2788 13.2997 21.2788 15.2101 21.5934 16.1316C21.8181 16.7609 21.8856 16.8058 22.4474 16.6036C23.3015 16.3114 24.7848 14.8505 25.2792 13.7942C25.9759 12.3333 26.0209 8.31029 25.3241 8.31029C25.1668 8.31029 24.605 8.66989 24.0656 9.09692Z"
+                                        fill="#B8282E" />
+                                    <path
+                                        d="M0.377666 12.7613C-0.453885 13.6603 0.175397 15.0537 1.41149 15.0537C2.04077 15.0537 2.69252 14.3345 2.69252 13.6603C2.69252 13.0984 1.88345 12.3567 1.27664 12.3567C0.984473 12.3567 0.579935 12.5365 0.377666 12.7613Z"
+                                        fill="#B8282E" />
+                                    <path
+                                        d="M37.6843 12.7613C36.8528 13.6603 37.482 15.0537 38.7181 15.0537C39.3474 15.0537 39.9992 14.3345 39.9992 13.6603C39.9992 13.0984 39.1901 12.3567 38.5833 12.3567C38.2911 12.3567 37.8866 12.5365 37.6843 12.7613Z"
+                                        fill="#B8282E" />
+                                    <path
+                                        d="M8.19637 15.615C8.08399 15.6599 7.70193 15.7498 7.34234 15.8172C6.78048 15.9521 6.75801 16.0195 6.98275 16.4465C7.38729 17.2107 9.25266 19.0986 9.92689 19.4582C11.0057 20.0201 12.7137 20.2448 13.9273 19.9751C14.5566 19.8403 15.096 19.638 15.1859 19.5256C15.3882 19.1885 14.2195 17.368 13.3655 16.7162C12.1519 15.7948 9.40998 15.2104 8.19637 15.615Z"
+                                        fill="#B8282E" />
+                                    <path
+                                        d="M28.1345 15.9073C26.831 16.3793 25.6623 17.3682 25.033 18.5593C24.5161 19.5033 24.7184 19.7505 26.1792 20.0202C28.6289 20.4697 31.0112 19.2785 32.7642 16.7164C33.2137 16.0421 33.2362 15.9972 32.8541 15.8399C31.8652 15.4578 29.3256 15.4803 28.1345 15.9073Z"
+                                        fill="#B8282E" />
+                                    <path
+                                        d="M18.7163 19.8856C18.0421 20.3575 17.8398 21.5487 18.2893 22.4252C19.368 24.4929 22.6268 22.9646 21.7953 20.7846C21.6604 20.425 21.3907 20.0204 21.166 19.8631C20.6491 19.4585 19.3006 19.481 18.7163 19.8856Z"
+                                        fill="#B8282E" />
+                                </svg>
 
-                                    <h2 className={"text-[36px] leading-relaxed font-semibold text-jv-text-black"}>
-                                        धामको संरचना र सुविधाहरू
-                                    </h2>
-                                </div>
+                                <h2 className={"text-[36px] leading-relaxed font-semibold text-jv-text-black"}>
+                                    धामको संरचना र सुविधाहरू
+                                </h2>
+                            </div>
 
-                                <div className={"flex gap-[37px] mt-[30px]"}>
-                                    <div className={"flex flex-col gap-[25px]"}>
-                                        {features.slice(0, 10).map((item, index) => (
-                                            <div key={item.key}
-                                                className={"flex items-center gap-[16px]"}>
-                                                <div
-                                                    className={"w-[30px] h-[30px] border border-dashed border-jv-red rounded-full flex items-center justify-center"}>
+                            <div className="flex items-center gap-[25px]">
+                                <div className={"flex-1"}>
+                                    <div className={"flex gap-[37px] mt-[30px]"}>
+                                        <div className={"flex flex-col gap-[25px]"}>
+                                            {features.slice(0, 10).map((item, index) => (
+                                                <div key={item.key}
+                                                    className={"flex items-center gap-[16px]"}>
                                                     <div
-                                                        className={"w-[24px] h-[24px] border border-jv-red rounded-full  flex items-center justify-center text-[14px] leading-[15px] text-jv-red"}>
-                                                        {index + 1}
-                                                    </div>
-                                                </div>
-
-                                                <span
-                                                    className={"text-[20px] leading-relaxed font-medium text-jv-text-black"}>
-                                                    {item.label}
-                                                </span>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    <div className={"flex flex-col gap-[25px]"}>
-                                        {features.slice(10, 20).map((item, index) => (
-                                            <div key={item.key}
-                                                className={"flex items-center gap-[16px]"}>
-                                                <div
-                                                    className={"w-[30px] h-[30px] border border-dashed border-jv-red rounded-full flex items-center justify-center"}>
-                                                    <div
-                                                        className={"w-[24px] h-[24px] border border-jv-red rounded-full  flex items-center justify-center"}>
-                                                        <div className={"text-[14px] leading-[15px] text-jv-red"}>
-                                                            {index + 11}
+                                                        className={"w-[30px] h-[30px] border border-dashed border-jv-red rounded-full flex items-center justify-center"}>
+                                                        <div
+                                                            className={"w-[24px] h-[24px] border border-jv-red rounded-full  flex items-center justify-center text-[14px] leading-[15px] text-jv-red"}>
+                                                            <span className="translate-y-[2px]">
+                                                                {index + 1}
+                                                            </span>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                <span
-                                                    className={"text-[20px] leading-relaxed font-medium text-jv-text-black"}>
-                                                    {item.label}
-                                                </span>
-                                            </div>
-                                        ))}
+                                                    <span
+                                                        className={"text-[20px] leading-relaxed font-medium text-jv-text-black translate-y-[4px]"}>
+                                                        {item.label}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div className={"flex flex-col gap-[25px]"}>
+                                            {features.slice(10, 20).map((item, index) => (
+                                                <div key={item.key}
+                                                    className={"flex items-center gap-[16px]"}>
+                                                    <div
+                                                        className={"w-[30px] h-[30px] border border-dashed border-jv-red rounded-full flex items-center justify-center"}>
+                                                        <div
+                                                            className={"w-[24px] h-[24px] border border-jv-red rounded-full  flex items-center justify-center text-[14px] leading-[15px] text-jv-red"}>
+                                                            <span className="translate-y-[2px]">
+                                                                {index + 11}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <span
+                                                        className={"text-[20px] leading-relaxed font-medium text-jv-text-black translate-y-[4px]"}>
+                                                        {item.label}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className={"mt-[80px]"}>
-                                    <div className={"border-y border-y-[#D2B14A] p-[10px]"}>
-                                        <div className={"flex items-center gap-[45px]"}>
-                                            <div className={"flex items-center gap-[15px]"}>
-                                                <div className={"w-[48px] h-[48px] relative"}>
-                                                    <Image fill src={"/assets/area_coverage_icon.gif"}
-                                                        alt={"area-coverage"} />
+                                    <div className={"mt-[80px]"}>
+                                        <div className={"border-y border-y-[#D2B14A] p-[10px]"}>
+                                            <div className={"flex items-center justify-between gap-[45px]"}>
+                                                <div className={"flex items-center gap-[15px]"}>
+                                                    <div className={"w-[48px] h-[48px] relative"}>
+                                                        <Image fill src={"/assets/area_coverage_icon.gif"}
+                                                            alt={"area-coverage"} />
+                                                    </div>
+
+                                                    <div className={"flex flex-col gap-[5px]"}>
+                                                        <h3 className={"text-[18px] leading-relaxed text-jv-text-black"}>
+                                                            क्षेत्रफल
+                                                        </h3>
+
+                                                        <span
+                                                            className={"text-[20px] leading-relaxed font-bold text-jv-text-black"}>
+                                                            ७१ रोपनी
+                                                        </span>
+                                                    </div>
                                                 </div>
 
-                                                <div className={"flex flex-col gap-[5px]"}>
-                                                    <h3 className={"text-[18px] leading-relaxed text-jv-text-black"}>
-                                                        क्षेत्रफल
-                                                    </h3>
+                                                <div className={"flex items-center gap-[15px]"}>
+                                                    <div className={"w-[48px] h-[48px] relative"}>
+                                                        <Image fill src={"/assets/altitude_icon.gif"} alt={"area-coverage"} />
+                                                    </div>
 
-                                                    <span
-                                                        className={"text-[20px] leading-relaxed font-bold text-jv-text-black"}>
-                                                        ७१ रोपनी / ३६,139 वर्गमीटर
-                                                    </span>
-                                                </div>
-                                            </div>
+                                                    <div className={"flex flex-col gap-[5px]"}>
+                                                        <h3 className={"text-[18px] leading-relaxed text-jv-text-black"}>
+                                                            समुद्र सतहबाट उचाइ
+                                                        </h3>
 
-                                            <div className={"flex items-center gap-[15px]"}>
-                                                <div className={"w-[48px] h-[48px] relative"}>
-                                                    <Image fill src={"/assets/altitude_icon.gif"} alt={"area-coverage"} />
-                                                </div>
-
-                                                <div className={"flex flex-col gap-[5px]"}>
-                                                    <h3 className={"text-[18px] leading-relaxed text-jv-text-black"}>
-                                                        समुद्र सतहबाट उचाइ
-                                                    </h3>
-
-                                                    <span
-                                                        className={"text-[20px] leading-relaxed font-bold text-jv-text-black"}>
-                                                        ७१ रोपनी / ३६,139 वर्गमीटर
-                                                    </span>
+                                                        <span
+                                                            className={"text-[20px] leading-relaxed font-bold text-jv-text-black"}>
+                                                            १५०० मिटर
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div className={"mt-[30px]"}>
-                                    {/* <Button type={"primary"}
+                                    <div className={"mt-[30px]"}>
+                                        {/* <Button type={"primary"}
                                         icon={(
                                             <svg width="24" height="24" className={"w-[24px] h-[24px]"} viewBox="0 0 24 24"
                                                 fill="none"
@@ -613,11 +641,12 @@ export default function Home() {
                                         iconPosition={"end"}>
                                         Explore 3d tour
                                     </Button> */}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="basis-[650px] grow-0 h-[750px] relative">
-                                <Image fill alt="dham model" src={"/assets/dham_model.png"} />
+                                <div className="basis-[650px] grow-0 h-[750px] relative">
+                                    <Image fill alt="dham model" src={"/assets/dham_model.png"} />
+                                </div>
                             </div>
                         </section>
 
@@ -646,7 +675,7 @@ export default function Home() {
                             <div className="mt-[60px]">
                                 <div className="relative flex justify-between">
                                     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
-                                        <div className="min-w-[444px] w-[444px] h-[444px] relative animate-[spin_20s_linear_infinite]">
+                                        <div className="min-w-[444px] w-[444px] h-[444px] relative animate-[spin_60s_linear_infinite]">
                                             <Image fill src={"/assets/goal_mandala.png"} alt="meditation" />
                                         </div>
                                     </div>
@@ -771,7 +800,7 @@ export default function Home() {
                         आउनुहोस्, स्वस्थ, शान्त र समृद्ध राष्ट्रका निर्माणको यो अभियानमा हातेमालो गरौँ !!
                     </h2>
                 </section>
-            </main>
+            </main >
 
             <Footer />
         </>
@@ -797,8 +826,8 @@ const ChakraCard = ({ icon, label, color }) => {
 
 const GoalCard = ({ label, icon }) => {
     return (
-        <article className={"px-[10px] py-[15px] rounded-[100px] flex items-center gap-[10px] border border-white bg-white hover:border-[#D9B950]"}>
-            <div className={"min-w-[62px] h-[62px] bg-[url('/assets/benefit_index_icon.png')] bg-cover flex items-center justify-center"}>
+        <article className={"px-[15px] py-[15px] rounded-[100px] flex items-center gap-[10px] border border-white bg-white hover:border-[#D9B950]"}>
+            <div className={"min-w-[70px] h-[70px] bg-[url('/assets/benefit_index_icon.png')] bg-cover flex items-center justify-center"}>
                 <div className="w-[40px] h-[40px] relative">
                     <Image fill src={icon} alt={label} />
                 </div>
@@ -818,7 +847,7 @@ const BenefitCard = ({ label, index }) => (
         </p>
 
         <div className="flex items-center justify-center min-w-[62px] w-[62px] h-[62px] relative bg-[url('/assets/benefit_index_icon.png')] bg-cover">
-            <span className="text-[20px] leading-relaxed font-medium text-jv-red">
+            <span className="text-[20px] leading-relaxed font-medium text-jv-red translate-y-0.5">
                 {index}
             </span>
         </div>

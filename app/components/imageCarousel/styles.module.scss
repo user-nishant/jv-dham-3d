@@ -1,0 +1,25 @@
+.sliderContainer {
+  max-width: 650px;
+
+  :global(.slick-slider) {
+    // display: none;
+    :global(.slick-slide) {
+      //   width: 290px !important;
+    }
+  }
+
+  .sliderFooter {
+    .chevronBtn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid var(--jv-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--jv-red);
+      cursor: pointer;
+      z-index: 1;
+    }
+  }
+}

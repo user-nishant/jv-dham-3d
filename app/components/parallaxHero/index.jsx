@@ -1,4 +1,5 @@
 'use client';
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 function ParallaxHero() {
@@ -25,7 +26,7 @@ function ParallaxHero() {
                 pointerEvents: visible ? "auto" : "none"
             }}
         >
-            <div
+            {/* <div
                 className="min-w-[400px] h-[60px] bg-linear-[to_right,#D9B765,#CBAA59,#ECD46D,#E4C45F] flex items-center justify-center px-[20px] py-[12px] text-white text-[30px] leading-[36px] font-medium text-shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]"
                 style={{
                     clipPath:
@@ -35,6 +36,9 @@ function ParallaxHero() {
                 <span className="">
                     ‘युग बदल्ने धाम, बनाउने मेरो काम’
                 </span>
+            </div> */}
+            <div className="w-[400px] h-[60px] relative">
+                <Image fill src={'/assets/header_text.svg'} alt="‘युग बदल्ने धाम, बनाउने मेरो काम’"></Image>
             </div>
 
             <h1 className="text-[100px] leading-[116px] font-semibold text-jv-red text-center mt-[15px]">

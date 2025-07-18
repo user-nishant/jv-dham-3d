@@ -242,7 +242,7 @@ const Footer = ({showFullSection = true}) => {
                                     stroke="#B8282E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                         )}>
-                            <p className="text-[16px] leading-[24px] text-jv-text-black w-[300px] tracking-normal">
+                            <p className="text-[16px] leading-[24px] text-jv-text-black w-[300px] max-md:w-auto max-md:whitespace-pre-wrap tracking-normal">
                                 {contactDetails.location}
                             </p>
                         </ContactCard>
