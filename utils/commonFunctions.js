@@ -27,3 +27,23 @@ export const convertToNepaliNumber= (input) =>{
         return /\d/.test(char) ? nepaliDigits[char] : char;
     }).join('');
 }
+
+
+export const numberInputRule = [
+    {
+        pattern: new RegExp('^([0-9]\\d*(?:\\.\\d{1,7})?)$'),
+        message: 'Only accepts digits',
+    },
+    { required: true, message: 'Please input your donation amount' },
+];
+
+export const numberInputProps = {
+    onWheel: (e) => e.target.blur(),
+    onKeyDown: (e) => symbolsArr.includes(e.key) && e.preventDefault(),
+    onKeyUp: e => e.preventDefault()
+}
+export const numberInputPropsExcludeDecimal = {
+    onWheel: (e) => e.target.blur(),
+    onKeyDown: (e) => [...symbolsArr, "."].includes(e.key) && e.preventDefault(),
+    onKeyUp: e => e.preventDefault()
+}

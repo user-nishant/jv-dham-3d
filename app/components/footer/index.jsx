@@ -13,13 +13,13 @@ const contribution = [
         key: 2,
         icon: '/assets/gifs/house.gif',
         title: 'आर्थिक योगदान',
-        label: 'धामको दीर्घकालीन सञ्चालन र संरचना निर्माणमा तपाईंको आर्थिक सहयोग महत्वपूर्ण योगदान बन्न सक्छ।'
+        label: 'तपाईंले व्यक्तिगत वा पारिवारिक रूपमा पार्क, ध्यानकक्ष, आवास आदि भौतिक संरचना निर्माण गरेर प्रतिष्ठानलाई हस्तान्तरण गर्न सक्नुहुन्छ।'
     },
     {
         key: 3,
         icon: '/assets/gifs/high-five.gif',
         title: 'आर्थिक योगदान',
-        label: 'धामको दीर्घकालीन सञ्चालन र संरचना निर्माणमा तपाईंको आर्थिक सहयोग महत्वपूर्ण योगदान बन्न सक्छ।'
+        label: 'आफ्ना सीप र क्षमतामार्फत सेवा प्रदान गरी आत्मिक सन्तुष्टि र पुण्यको अनुभूति प्राप्त गर्नुहोस्।'
     }
 ]
 
@@ -99,7 +99,15 @@ const Footer = ({showFullSection = true}) => {
                         </div>
 
                         <div className="mt-[42px]">
-                            <div className="grid grid-cols-3 gap-[40px]">
+                            <div className="w-full grid grid-cols-3 gap-[40px] relative text-center">
+
+                                <div className='col-span-3 absolute w-full h-full flex justify-evenly items-center '>
+                                    <div
+                                        className="w-[10px] h-[10px] bg-[#B8282E] rounded-full"></div>
+                                    <div
+                                        className="w-[10px] h-[10px] bg-[#B8282E] rounded-full"></div>
+
+                                </div>
                                 {contribution.map(item => (
                                     <article key={item.key}
                                              className="py-[20px] px-[26px] gap-[20px] flex items-center justify-center flex-col">
@@ -118,6 +126,7 @@ const Footer = ({showFullSection = true}) => {
                                         </p>
                                     </article>
                                 ))}
+
                             </div>
                         </div>
 
