@@ -42,3 +42,223 @@ body {
 /* h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 } */
+
+
+.ant-collapse{
+  background: transparent !important;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+
+  .ant-collapse-item {
+    height: max-content;
+      /*margin-bottom: 20px !important;*/
+      border: 1px solid #D9B950 !important;
+      /*border-image-source: linear-gradient(180deg, #D9B950 0%, #F5E784 35.1%, #D0AA46 73.56%, #E8C25D 100%);*/
+      /*border-image-slice: 1; !* Required to make the gradient apply *!*/
+      .ant-collapse-header{
+        padding: 0;
+        .ant-collapse-expand-icon{
+          margin-top: 5px;
+        }
+      }
+
+
+    }
+    .ant-collapse-header {
+        color: var(--foreground);
+        font-weight: 600;
+    }
+    .ant-collapse-content {
+      margin-top: 14px;
+        color: var(--foreground);
+      .ant-collapse-content-box{
+        padding: 0 !important;
+      }
+    }
+}
+.ant-collapse>.ant-collapse-item>.ant-collapse-header{
+  padding: 0 !important;
+}
+
+#contribution-form{
+  width: 100%;
+
+  .ant-steps{
+    width: 100%;
+    padding-inline: 135px;
+    /*
+    .ant-steps-item-tail:after{
+      background: transparent;
+      border-bottom: 1px dashed #A1AEBE;
+    }
+    */
+    .ant-steps-icon{
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      border: 2px solid #A1AEBE;
+    }
+    .ant-steps-item-tail{
+      margin-inline-start: 120px;
+      width: 80px;
+    }
+    .ant-steps-item-finish .ant-steps-icon{
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      background: #01B9F1;
+      border: 2px solid #01B9F1;
+    }
+    .ant-steps-item-process .ant-steps-icon{
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      border: 2px solid #01B9F1;
+      svg{
+        path{
+          fill: #01B9F1;
+        }
+      }
+    }
+    .ant-steps-item-container{
+      width: max-content;
+      padding-inline: 20px;
+    }
+    .ant-steps-item{
+      width: max-content;
+    }
+    /*
+    .ant-steps-item-container:after{
+      content: '........';
+      position: absolute;
+      display: block;
+      height: 2px;
+    }
+    */
+    .ant-steps-item-tail:after{
+      /*
+      content: '........';
+      display: block;
+      */
+      height: 2px;
+      background: transparent;
+      border-bottom: 2px dashed #A1AEBE;
+    }
+    .ant-steps-item-content{
+      margin-top: 10px;
+      .ant-steps-item-title{
+        font-size: 18px;
+        font-weight: 600;
+        width: max-content;
+      }
+    }
+    .ant-steps-item-finish, .ant-steps-item-process{
+      .ant-steps-item-content{
+        .ant-steps-item-title{
+          color :#01B9F1
+        }
+      }
+      .ant-steps-item-tail:after{
+        /*
+        content: '........';
+        display: block;
+        */
+        height: 2px;
+        background: transparent;
+        border-bottom: 2px dashed #01B9F1;
+      }
+
+
+    }
+
+  }
+  .amount-section{
+    width: 100%;
+    .ant-radio-button-wrapper{
+      width: 100%;
+      border-color: #E4E4E4;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .ant-radio-button-label{
+        color: #3A3C5C;
+        font-weight: bold;
+        font-size: 16px;
+      }
+    }
+    .ant-radio-button-wrapper-checked{
+      background: #CCEFF7;
+      border: 2px solid #01B9F1 !important;
+      .ant-radio-button-label{
+        color: #3A3C5C;
+        font-weight: bold;
+        font-size: 16px;
+      }
+    }
+    .ant-radio-button-wrapper:before{
+      display: none !important;
+    }
+
+  }
+  .payment-provider-select{
+    .ant-radio-button-wrapper:before{
+      display: none !important;
+    }
+  }
+  .ant-form-item{
+    .ant-form-item-control{
+      .ant-form-item-control-input{
+        .ant-form-item-control-input-content{
+          input.ant-input{
+            height: 44px;
+            border-radius: 4px;
+          }
+          .ant-picker{
+            height: 44px;
+          }
+          .input-prefix-amount{
+            padding-top: 0;
+            padding-bottom: 0;
+            border-radius: 4px;
+            padding-left: 0;
+            border: 1px solid #E4E4E4 !important;
+            .ant-input-prefix{
+              background: #F4F4F4;
+              width: 58px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-top-left-radius: 0;
+              border-bottom-left-radius: 0;
+              margin-right: 17px;
+              color: #3A3C5C;
+              font-weight: bold;
+              font-size: 16px;
+            }
+            input.ant-input{
+              height: 58px;
+              font-size: 16px;
+            }
+            .ant-input::-webkit-outer-spin-button,
+            .ant-input::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
