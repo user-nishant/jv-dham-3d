@@ -1,3 +1,4 @@
+export const symbolsArr = ['e', 'E', '+', '-', '='];
 export const convertToNepaliNumber= (input) =>{
     const nepaliDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
 
