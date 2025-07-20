@@ -37,15 +37,15 @@ function ParallaxHero() {
                     ‘युग बदल्ने धाम, बनाउने मेरो काम’
                 </span>
             </div> */}
-            <div className="w-[400px] h-[60px] relative">
+            <div className="w-[400px] h-[60px] max-md:w-[250px] max-md:h-[40px] relative">
                 <Image fill src={'/assets/header_text.svg'} alt="‘युग बदल्ने धाम, बनाउने मेरो काम’"></Image>
             </div>
 
-            <h1 className="text-[100px] leading-[116px] font-semibold text-jv-red text-center mt-[15px]">
+            <h1 className="text-[100px] leading-[1.2] max-md:text-[50px] font-semibold text-jv-red text-center mt-[15px] after::content-none after:table after:mb-[calc(-0.5lh+0.3em)]">
                 जीवन विज्ञान धाम
             </h1>
 
-            <h3 className="text-[30px] leading-[44px] font-medium text-jv-red text-center">
+            <h3 className="text-[30px] leading-[44px] max-md:text-[20px] max-md:leading-1 font-medium text-jv-red text-center">
                 अन्तर्राष्ट्रिय आध्यात्मिक तथा आरोग्य केन्द्र
             </h3>
         </div>
