@@ -28,7 +28,7 @@
     "react-slick": "^0.30.3",
     "sass": "^1.89.2",
     "slick-carousel": "^1.8.1",
-    "tailwindcss": "^4.1.11",
+    "tailwindcss": "^4.0.0",
     "three": "^0.178.0"
   },
   "devDependencies": {

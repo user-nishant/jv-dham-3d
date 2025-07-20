@@ -223,7 +223,6 @@ const ChakraSpinner = () => {
 
         // Radius of the semicircle (adjust based on container size)
         const radius = (window.innerWidth + 100) / 4
-        console.log(radius, 'this is the radius');
 
         // Calculate x and y positions
         const x = 50 + (radius * Math.cos(angle)) / 8 // Convert to percentage and scale
@@ -236,11 +235,11 @@ const ChakraSpinner = () => {
         <div
             className={styles.spinnerContainer}>
             <div className={styles.spinPath}>
-                {[...chakraList, ...chakraList, ...chakraList, ...chakraList].map((item, i) => (
+                {[...chakraList, ...chakraList].map((item, i) => (
                     <div key={i}
                         className={styles.itemContent}
                         style={{
-                            animationDelay: `${((i * 5) / chakraList.length * 4).toFixed(
+                            animationDelay: `${((i * 5) / chakraList.length * 2).toFixed(
                                 1
                             )}s`,
                         }}>
