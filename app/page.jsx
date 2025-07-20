@@ -90,19 +90,18 @@ const goalList = [
     },
 ]
 
-
 export default function Home() {
     return (
         <>
             <main className="min-h-screen w-full flex flex-col overflow-x-hidden">
-                <section className="relative bg-[linear-gradient(to_top_right,rgba(255,255,255,1),rgba(241,180,76,0.3))] bg-cover flex flex-col">
+                <section className="relative bg-linear-[to_top_right,#FFFFFF,rgba(241,180,76,0.24)]">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2">
-                        <div className="w-[370px] h-[190px] relative">
+                        <div className="w-[370px] h-[190px] relative max-md:w-[148px] max-md:h-[76px]">
                             <Image src={"/assets/chakra_bg.png"} alt="chakra" fill />
                         </div>
                     </div>
 
-                    <div className="absolute top-[8%] animate-cloud">
+                    <div className="absolute max-md:hidden top-[8%] animate-[cloud-move_300s_linear_infinite] z-1">
                         <div className="w-[460px] h-[285px] relative">
                             <Image
                                 fill
@@ -112,27 +111,23 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* Custom CSS for the animation */}
-                    <style jsx>{`
-                            @keyframes cloudMove {
-                            0% {
-                                left: 15px;
-                            }
-                            50% {
-                                left: 50%;
-                                transform: translateX(-50%);
-                            }
-                            100% {
-                                left: 15px;
-                            }
-                            }
-                            
-                            .animate-cloud {
-                            animation: cloudMove 300s linear infinite;
-                            }
-                        `}</style>
+                    {/* Add this to your global CSS file (globals.css or similar) */}
+                    <style jsx global>{`
+  @keyframes cloud-move {
+    0% {
+      left: 15px;
+    }
+    50% {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    100% {
+      left: 15px;
+    }
+  }
+`}</style>
 
-                    <div className="absolute top-[20%] animate-cloud1 z-[1]">
+                    <div className="absolute max-md:hidden top-[20%] animate-cloud1 z-[1]">
                         <div className="w-[460px] h-[285px] relative">
                             <Image
                                 fill
@@ -156,13 +151,13 @@ export default function Home() {
             right: -5%;
           }
         }
-        
+
         .animate-cloud1 {
           animation: cloudMove1 300s linear infinite;
         }
       `}</style>
 
-                    <div className="absolute top-[30%] animate-cloud2 z-[1]">
+                    <div className="absolute max-md:hidden top-[30%] animate-cloud2 z-[1]">
                         <div className="w-[460px] h-[285px] relative">
                             <Image
                                 fill
@@ -186,7 +181,7 @@ export default function Home() {
             left: -5%;
           }
         }
-        
+
         .animate-cloud2 {
           animation: cloudMove2 300s linear infinite;
         }
@@ -194,44 +189,51 @@ export default function Home() {
 
                     <Header />
 
-                    <div className="flex flex-1 flex-col items-center justify-center pt-[90px] gap-[120px]">
+                    <div className="mt-[4.5%]">
                         <ParallaxHero />
+                    </div>
 
-                        <div className="relative">
-                            <ChakraSpinner />
+                    <div className="relative mt-[5%]">
+                        <div className="absolute -top-[10px]">
+                            <div className="w-[calc(100vw+100px)] h-[calc((100vw+100px)/2)] bg-gradient-to-t from-white/80 to-[#FFEBC3]/80 rounded-[calc((100vw+100px)/2)_calc((100vw+100px)/2)_0_0] blur-xs max-md:relative max-md:-left-[5%]">
 
-                            <div className="absolute bottom-0 left-0 w-full">
-                                <div className="w-full h-[600px] relative">
-                                    <Image fill
-                                        alt="jeevan vigyan dham"
-                                        src={'/assets/dham_cover.png'}
-                                        className="object-cover object-top" />
-                                </div>
                             </div>
+                        </div>
+
+                        <div className="absolute -top-[10px]">
+                            <ChakraSpinner></ChakraSpinner>
+                        </div>
+
+                        <div className="w-screen h-[calc((100vw+100px)/2)] relative mt-[40px]">
+                            <Image fill
+                                alt="jeevan vigyan dham"
+                                src={'/assets/dham_cover.png'}
+                                className="object-cover object-top" />
                         </div>
                     </div>
 
                     <div
-                        className="py-[20px] bg-linear-[to_right,#D9B765,#CBAA59,#ECD46D,#E4C45F] flex items-center justify-center z-[1]">
-                        <h2 className="text-[36px] leading-relaxed font-bold text-white text-center">
+                        className="py-[20px] bg-linear-[to_right,#D9B765,#CBAA59,#ECD46D,#E4C45F] flex items-center justify-center z-[1] relative max-md:px-[20px] max-md:py-[7px]">
+                        <h2 className="text-[36px] leading-relaxed max-md:text-[18px] font-bold text-white text-center">
                             धाम बनाउने काम केवल भवन होइन, हाम्रो श्रद्धा, संकल्प र सेवाभाव हो।
                         </h2>
                     </div>
                 </section>
 
+
                 {/*about us section*/}
                 <section
-                    className="px-[150px] pt-[56px] relative bg-[url('/assets/about_us_bg.png')] bg-cover bg-no-repeat bg-center z-0">
-                    <div className="absolute top-0 right-0 -z-1">
+                    className="px-[150px] pt-[56px] max-md:px-[20px] max-md:pt-[26px] relative bg-[url('/assets/about_us_bg.png')] bg-cover bg-no-repeat bg-center z-0">
+                    <div className="absolute top-0 right-0 -z-1 max-md:hidden">
                         <div className="w-[328px] h-[322px] relative">
                             <Image fill src={"/assets/chakra_right.png"} alt="chakra" />
                         </div>
                     </div>
 
-                    <div className={"space-y-[86px]"}>
-                        <div className="flex gap-[100px]">
-                            <div className="flex flex-col gap-[20px]">
-                                <svg width="40" height="24" className="w-[40px] h-[24px]" viewBox="0 0 40 24"
+                    <div className={"space-y-[86px] max-md:space-y-[25px]"}>
+                        <div className="flex gap-[100px] max-md:flex-col max-md:gap-[12px]">
+                            <div className="flex flex-col gap-[20px] max-md:gap-[10px]">
+                                <svg width="40" height="24" className="w-[40px] h-[24px] max-md:w-[24px] max-md:h-[14px]" viewBox="0 0 40 24"
                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M18.4667 1.05122C17.5452 2.17497 15.6799 5.00682 15.4327 5.63612C15.3428 5.90582 15.6125 6.19799 16.3541 6.69244C17.3655 7.34422 18.9162 8.78261 19.6578 9.77151C19.9725 10.1761 20.0174 10.1985 20.2197 9.83894C20.7591 8.93994 21.703 7.99599 23.0515 7.05204C23.8381 6.49017 24.4898 5.88334 24.4898 5.72602C24.4898 5.34394 22.0401 1.65805 21.1636 0.714099C20.1747 -0.31975 19.5679 -0.252324 18.4667 1.05122Z"
@@ -271,12 +273,12 @@ export default function Home() {
                                         fill="#B8282E" />
                                 </svg>
 
-                                <h2 className="text-[36px] leading-relaxed font-semibold text-black">
+                                <h2 className="text-[36px] leading-relaxed max-md:text-[20px] font-semibold text-black">
                                     पृष्ठभूमि
                                 </h2>
                             </div>
 
-                            <p className="text-[20px] leading-[40px] text-jv-text-black mt-[55px]">
+                            <p className="text-[20px] leading-[40px] text-jv-text-black mt-[55px] max-md:mt-0 max-md:text-[15px] max-md:leading-[30px]">
                                 नेपाल योग, ध्यान र शान्तिको आदिकालीन भूमि हो, जहाँ शिव, पतञ्जली र बुद्धजस्ता
                                 महामानवहरूको प्रेरणा बस्छ। यहीँको प्रकृति र संस्कृतिमा आध्यात्मिक ऊर्जा प्रवाहित छ। जीवन
                                 विज्ञान धाम नेपालकै मौलिक योग, ध्यान र आयुर्वेदलाई संरक्षण गर्दै आरोग्य पर्यटन प्रवर्धन
@@ -285,10 +287,10 @@ export default function Home() {
                             </p>
                         </div>
 
-                        <div className="flex gap-[100px]">
-                            <div className="flex flex-col gap-[30px] flex-1">
-                                <div className="flex flex-col gap-[20px]">
-                                    <svg width="40" height="24" className="w-[40px] h-[24px]" viewBox="0 0 40 24"
+                        <div className="flex gap-[100px] max-md:gap-[12px] max-md:flex-col">
+                            <div className="flex flex-col gap-[30px] flex-1 max-md:gap-[12px]">
+                                <div className="flex flex-col gap-[20px] max-md:gap-[10px]">
+                                    <svg width="40" height="24" className="w-[40px] h-[24px] max-md:w-[24px] max-md:h-[14px]" viewBox="0 0 40 24"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M18.4667 1.05122C17.5452 2.17497 15.6799 5.00682 15.4327 5.63612C15.3428 5.90582 15.6125 6.19799 16.3541 6.69244C17.3655 7.34422 18.9162 8.78261 19.6578 9.77151C19.9725 10.1761 20.0174 10.1985 20.2197 9.83894C20.7591 8.93994 21.703 7.99599 23.0515 7.05204C23.8381 6.49017 24.4898 5.88334 24.4898 5.72602C24.4898 5.34394 22.0401 1.65805 21.1636 0.714099C20.1747 -0.31975 19.5679 -0.252324 18.4667 1.05122Z"
@@ -328,12 +330,12 @@ export default function Home() {
                                             fill="#B8282E" />
                                     </svg>
 
-                                    <h2 className="text-[36px] leading-relaxed font-semibold text-black">
+                                    <h2 className="text-[36px] leading-relaxed max-md:text-[20px] font-semibold text-black">
                                         जीवन विज्ञान
                                     </h2>
                                 </div>
 
-                                <p className={"text-[20px] leading-[40px] text-jv-text-black"}>
+                                <p className={"text-[20px] leading-[40px] text-jv-text-black max-md:text-[15px] max-md:leading-[30px]"}>
                                     ८० भन्दा बढी देशमा फैलिएको जीवन विज्ञान एक आधुनिक, वैज्ञानिक र आध्यात्मिक संस्था हो,
                                     जसले विगत १४ वर्षदेखि योग, ध्यान र सकारात्मक जीवन विकासका कार्यक्रममार्फत ४०
                                     लाखभन्दा बढीलाई लाभ पुर्‍याएको छ।
@@ -341,11 +343,11 @@ export default function Home() {
                             </div>
 
                             <div
-                                className={"grow-0 shrink-0 basis-[640px] h-[355px] rounded-[20px] border border-[#D9B950] relative mt-[80px]"}>
-                                <div className={"absolute -top-[18%] -left-[6.5%] z-1 flex items-center justify-center"}>
-                                    <div className={"w-[155px] h-[155px] relative"}>
+                                className={"grow-0 shrink-0 basis-[640px] h-[355px] rounded-[20px] border border-[#D9B950] relative mt-[80px] max-md:basis-auto max-md:h-[165px]"}>
+                                <div className={"absolute -top-[18%] -left-[6.5%] max-md:-top-[16px] max-md:-left-[16px] z-1 flex items-center justify-center"}>
+                                    <div className={"w-[155px] h-[155px] relative max-md:w-[72px] max-md:h-[72px]"}>
                                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-1">
-                                            <div className="w-[27px] h-[42px] relative">
+                                            <div className="w-[27px] h-[42px] max-md:w-[16px] max-md:h-[26px] relative">
                                                 <Image fill
                                                     src={"/assets/jv.png"}
                                                     alt={"jv-organization"} />
@@ -360,7 +362,7 @@ export default function Home() {
                                 </div>
 
                                 <div
-                                    className={"w-[640px] h-[360px] relative rounded-[20px] border-[6px] border-white overflow-hidden top-[9.7%] left-[7%]"}>
+                                    className={"w-[640px] h-[360px] max-md:w-full relative rounded-[20px] border-[6px] border-white overflow-hidden top-[9.7%] left-[7%] max-md:top-[16px] max-md:left-[20px] max-md:h-[168px]"}>
                                     <Image fill
                                         src={"/assets/gurus.png"}
                                         alt={"guru"}
@@ -372,15 +374,14 @@ export default function Home() {
                         </div>
 
                         <div
-                            className={"h-[91px] px-[150px] flex items-center bg-[url('/assets/decorative_bg.png')] bg-cover bg-no-repeat bg-center -mx-[150px] -mt-[10%]"}>
+                            className={"h-[91px] px-[150px] flex items-center bg-[url('/assets/decorative_bg.png')] bg-cover bg-no-repeat bg-center -mx-[150px] -mt-[10%] max-md:px-[20px] max-md:h-[60px] max-md:-mx-[20px] max-md:-mt-[5%]"}>
                             <Link href={"https://jeevanvigyan.org"}
                                 target={'_blank'}>
-                                <div className="flex items-center gap-[5px] text-[20px] leading-[1.3] text-white before::content-none before:table before:mb-[calc(-0.5lh+0.34em)] after::content-none after:table after:mb-[calc(-0.5lh+0.3em)]">
-                                    <span className="">
+                                <div className="group flex items-center gap-[5px] text-[20px] leading-[1.3] text-white max-md:text-[15px]">
+                                    <span className="after::content-none after:table after:mb-[calc(-0.5lh+0.38em)]">
                                         Visit Jeevan Vigyan website
                                     </span>
-
-                                    <FaArrowRight />
+                                    <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-2" />
                                 </div>
                             </Link>
                         </div>
@@ -389,15 +390,15 @@ export default function Home() {
 
                 {/*jv goals section*/}
                 <section section className={"flex flex-col relative bg-background"}>
-                    <div className={"bg-[url('/assets/decorative_bg.png')] absolute bottom-0 left-0 w-full h-[345px]"}>
+                    <div className={"bg-[url('/assets/decorative_bg.png')] absolute bottom-0 left-0 w-full h-[345px] max-md:h-[105px]"}>
 
                     </div>
 
                     <div
-                        className={"bg-[url('/assets/goals_bg.png')] bg-cover bg-no-repeat bg-center px-[150px] pt-[48px] pb-[52px]"}>
-                        <div className={"flex flex-col items-center justify-center gap-[30px]"}>
-                            <div className={"flex flex-col items-center justify-center gap-[20px]"}>
-                                <svg width="40" height="24" className={"w-[40px] h-[24px]"} viewBox="0 0 40 24"
+                        className={"bg-[url('/assets/goals_bg.png')] bg-cover bg-no-repeat bg-center px-[150px] pt-[48px] pb-[52px] max-md:p-[20px] "}>
+                        <div className={"flex flex-col items-center justify-center gap-[30px] max-md:gap-[20px]"}>
+                            <div className={"flex flex-col items-center justify-center gap-[20px] max-md:gap-[10px]"}>
+                                <svg width="40" height="24" className={"w-[40px] h-[24px] max-md:w-[24px] max-md:h-[14px]"} viewBox="0 0 40 24"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -438,12 +439,12 @@ export default function Home() {
                                         fill="#B8282E" />
                                 </svg>
 
-                                <h2 className={"text-[36px] leading-relaxed font-semibold text-black"}>
+                                <h2 className={"text-[36px] leading-relaxed font-semibold text-black max-md:text-[20px]"}>
                                     जीवन विज्ञान धाम र यसका लक्ष्यहरू
                                 </h2>
                             </div>
 
-                            <p className={"text-[20px] leading-[36px] text-jv-text-black text-center"}>
+                            <p className={"text-[20px] leading-[36px] max-md:text-[15px] max-md:leading-[30px] text-jv-text-black text-center"}>
                                 परम श्रद्धेय रमेश गुरुदेव र भानु गुरुदेवको परिकल्पनामा जीवन विज्ञान धाम नेपालको मौलिक
                                 योग,
                                 ध्यान र अध्यात्मलाई विश्वसामु पुर्‍याउने लक्ष्यसहित निर्माण भइरहेको छ, जहाँ नेपाली
@@ -451,9 +452,9 @@ export default function Home() {
                                 झल्किने वास्तुकलामा आधारित अत्याधुनिक संरचना तयार हुँदैछ। जीवन विज्ञान धामका लक्ष्यहरूः
                             </p>
 
-                            <div className={"flex items-center justify-center flex-wrap gap-[35px]"}>
+                            <div className={"flex items-center justify-center flex-wrap gap-[35px] max-md:gap-[20px]"}>
                                 {goalList.map(item => (
-                                    <div key={item.key} className="basis-[48%] max-w-[60%] shrink grow">
+                                    <div key={item.key} className="basis-[48%] max-w-[60%] shrink grow max-md:basis-auto max-md:max-w-full max-md:shrink-0 max-md:grow-0">
                                         <GoalCard
                                             label={item.label}
                                             icon={item.icon} />
@@ -463,8 +464,8 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className={"px-[150px] pb-[72px]"}>
-                        <div className={"w-full h-[640px] bg-amber-50 relative z-1"}>
+                    <div className={"px-[150px] pb-[72px] max-md:px-[20px] max-md:pb-[27px]"}>
+                        <div className={"w-full h-[640px] bg-amber-50 relative z-1 max-md:h-[180px]"}>
                             <video autoPlay
                                 loop
                                 muted
@@ -477,9 +478,9 @@ export default function Home() {
                 </section >
 
                 <section className="bg-white">
-                    <section className={"flex flex-col gap-[16px] relative before::content-none before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-[0.5] before:bg-[url('/assets/dham_arch_bg.png')] before:bg-cover before:bg-center before:bg-no-repeat"}>
+                    <section className={"flex flex-col gap-[16px] relative before::content-none before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-[0.5] before:bg-[url('/assets/dham_arch_bg.png')] before:bg-cover before:bg-center before:bg-no-repeat max-md:gap-[20px]"}>
                         <section className={"absolute -top-[161px] -right-[157px] flex items-center justify-center"}>
-                            <div className={"w-[315px] h-[322px] relative flex items-center justify-center"}>
+                            <div className={"w-[315px] h-[322px] relative flex items-center justify-center max-md:w-[86px] max-md:h-[89px]"}>
                                 <Image fill
                                     src={"/assets/chakra_right_white.svg"}
                                     alt={"chakra"}
@@ -490,9 +491,9 @@ export default function Home() {
 
                         {/*dham architecture section*/}
                         <section
-                            className={"z-1 relative pl-[150px] py-[60px] flex flex-col gap-[30px] before::content-none before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-[0.2] before:bg-[url('/assets/dham_architecture_bg.png')] before:-z-1 before:bg-cover bg-no-repeat"}>
-                            <div className={"flex flex-col gap-[20px]"}>
-                                <svg width="40" height="24" className={"w-[40px] h-[24px]"} viewBox="0 0 40 24"
+                            className={"z-1 relative pl-[150px] py-[60px] flex flex-col gap-[30px] before::content-none before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-[0.2] before:bg-[url('/assets/dham_architecture_bg.png')] before:-z-1 before:bg-cover bg-no-repeat max-md:p-[20px]"}>
+                            <div className={"flex flex-col gap-[20px] max-md:gap-[12px] max-md:items-center max-md:justify-center"}>
+                                <svg width="40" height="24" className={"w-[40px] h-[24px] max-md:w-[24px] max-md:h-[14px]"} viewBox="0 0 40 24"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -533,22 +534,22 @@ export default function Home() {
                                         fill="#B8282E" />
                                 </svg>
 
-                                <h2 className={"text-[36px] leading-relaxed font-semibold text-jv-text-black"}>
+                                <h2 className={"text-[36px] leading-relaxed font-semibold text-jv-text-black max-md:text-[20px]"}>
                                     धामको संरचना र सुविधाहरू
                                 </h2>
                             </div>
 
-                            <div className="flex items-center gap-[25px]">
-                                <div className={"flex-1"}>
-                                    <div className={"flex gap-[37px] mt-[30px]"}>
-                                        <div className={"flex flex-col gap-[25px]"}>
+                            <div className="flex items-center gap-[25px] max-md:gap-[30px] max-md:flex-col">
+                                <div className={"flex-1 max-md:w-full"}>
+                                    <div className={"flex gap-[37px] mt-[30px] max-md:gap-[10px] max-sm:flex-col max-md:m-0 max-md:justify-around"}>
+                                        <div className={"flex flex-col gap-[25px] max-md:gap-[10px]"}>
                                             {features.slice(0, 10).map((item, index) => (
                                                 <div key={item.key}
                                                     className={"flex items-center gap-[16px]"}>
                                                     <div
-                                                        className={"w-[30px] h-[30px] border border-dashed border-jv-red rounded-full flex items-center justify-center"}>
+                                                        className={"w-[30px] h-[30px] border border-dashed border-jv-red rounded-full flex items-center justify-center max-md:w-[24px] max-md:h-[24px]"}>
                                                         <div
-                                                            className={"w-[24px] h-[24px] border border-jv-red rounded-full  flex items-center justify-center text-[14px] leading-[15px] text-jv-red"}>
+                                                            className={"w-[24px] h-[24px] border border-jv-red rounded-full flex items-center justify-center text-[14px] leading-[15px] max-md:text-[12px] text-jv-red max-md:w-[19px] max-md:h-[19px]"}>
                                                             <span className="translate-y-[2px]">
                                                                 {index + 1}
                                                             </span>
@@ -556,21 +557,21 @@ export default function Home() {
                                                     </div>
 
                                                     <span
-                                                        className={"text-[20px] leading-relaxed font-medium text-jv-text-black translate-y-[4px]"}>
+                                                        className={"text-[20px] leading-relaxed font-medium text-jv-text-black translate-y-[4px] max-md:text-[15px]"}>
                                                         {item.label}
                                                     </span>
                                                 </div>
                                             ))}
                                         </div>
 
-                                        <div className={"flex flex-col gap-[25px]"}>
+                                        <div className={"flex flex-col gap-[25px] max-md:gap-[20px]"}>
                                             {features.slice(10, 20).map((item, index) => (
                                                 <div key={item.key}
                                                     className={"flex items-center gap-[16px]"}>
                                                     <div
-                                                        className={"w-[30px] h-[30px] border border-dashed border-jv-red rounded-full flex items-center justify-center"}>
+                                                        className={"w-[30px] h-[30px] border border-dashed border-jv-red rounded-full flex items-center justify-center max-md:w-[24px] max-md:h-[24px]"}>
                                                         <div
-                                                            className={"w-[24px] h-[24px] border border-jv-red rounded-full  flex items-center justify-center text-[14px] leading-[15px] text-jv-red"}>
+                                                            className={"w-[24px] h-[24px] border border-jv-red rounded-full flex items-center justify-center text-[14px] leading-[15px] text-jv-red max-md:text-[12px] max-md:w-[19px] max-md:h-[19px]"}>
                                                             <span className="translate-y-[2px]">
                                                                 {index + 11}
                                                             </span>
@@ -578,7 +579,7 @@ export default function Home() {
                                                     </div>
 
                                                     <span
-                                                        className={"text-[20px] leading-relaxed font-medium text-jv-text-black translate-y-[4px]"}>
+                                                        className={"text-[20px] leading-relaxed font-medium text-jv-text-black translate-y-[4px] max-md:text-[15px]"}>
                                                         {item.label}
                                                     </span>
                                                 </div>
@@ -586,39 +587,39 @@ export default function Home() {
                                         </div>
                                     </div>
 
-                                    <div className={"mt-[80px]"}>
-                                        <div className={"border-y border-y-[#D2B14A] p-[10px]"}>
+                                    <div className={"mt-[80px] max-md:gap-[20px]"}>
+                                        <div className={"border-y border-y-[#D2B14A] p-[10px] max-md:px-[10px] max-md:py-[5px]"}>
                                             <div className={"flex items-center justify-between gap-[45px]"}>
                                                 <div className={"flex items-center gap-[15px]"}>
-                                                    <div className={"w-[48px] h-[48px] relative"}>
+                                                    <div className={"w-[48px] h-[48px] relative max-md:w-[32px] max-md:h-[32px]"}>
                                                         <Image fill src={"/assets/area_coverage_icon.gif"}
                                                             alt={"area-coverage"} />
                                                     </div>
 
                                                     <div className={"flex flex-col gap-[5px]"}>
-                                                        <h3 className={"text-[18px] leading-relaxed text-jv-text-black"}>
+                                                        <h3 className={"text-[18px] leading-relaxed text-jv-text-black max-md:text-[15px]"}>
                                                             क्षेत्रफल
                                                         </h3>
 
                                                         <span
-                                                            className={"text-[20px] leading-relaxed font-bold text-jv-text-black"}>
+                                                            className={"text-[20px] leading-relaxed font-bold text-jv-text-black max-md:text-[16px]"}>
                                                             ७१ रोपनी
                                                         </span>
                                                     </div>
                                                 </div>
 
                                                 <div className={"flex items-center gap-[15px]"}>
-                                                    <div className={"w-[48px] h-[48px] relative"}>
+                                                    <div className={"w-[48px] h-[48px] relative max-md:w-[32px] max-md:h-[32px]"}>
                                                         <Image fill src={"/assets/altitude_icon.gif"} alt={"area-coverage"} />
                                                     </div>
 
                                                     <div className={"flex flex-col gap-[5px]"}>
-                                                        <h3 className={"text-[18px] leading-relaxed text-jv-text-black"}>
+                                                        <h3 className={"text-[18px] leading-relaxed text-jv-text-black max-md:text-[15px]"}>
                                                             समुद्र सतहबाट उचाइ
                                                         </h3>
 
                                                         <span
-                                                            className={"text-[20px] leading-relaxed font-bold text-jv-text-black"}>
+                                                            className={"text-[20px] leading-relaxed font-bold text-jv-text-black max-md:text-[16px]"}>
                                                             १५०० मिटर
                                                         </span>
                                                     </div>
@@ -644,15 +645,15 @@ export default function Home() {
                                     </div>
                                 </div>
 
-                                <div className="basis-[650px] grow-0 h-[750px] relative">
+                                <div className="basis-[650px] grow-0 h-[750px] relative max-md:basis-[100vw] max-md:h-[415px] max-md:grow max-md:shrink max-md:w-screen">
                                     <Image fill alt="dham model" src={"/assets/dham_model.png"} />
                                 </div>
                             </div>
                         </section>
 
-                        <section className="px-[150px] pt-[62px] pb-[38px] bg-[url('/assets/dham_bg.png')] bg-cover bg-no-repeat">
-                            <div className="flex items-center justify-center flex-col gap-[20px]">
-                                <svg width="40" height="24" className="w-[40px] h-[24px]" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <section className="px-[150px] pt-[62px] pb-[38px] bg-[url('/assets/dham_bg.png')] bg-cover bg-no-repeat max-md:p-[20px]">
+                            <div className="flex items-center justify-center flex-col gap-[20px] max-md:gap-[12px]">
+                                <svg width="40" height="24" className="w-[40px] h-[24px] max-md:w-[24px] max-md:h-[14px]" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M18.4667 1.05122C17.5452 2.17497 15.6799 5.00682 15.4327 5.63612C15.3428 5.90582 15.6125 6.19799 16.3541 6.69244C17.3655 7.34422 18.9162 8.78261 19.6578 9.77151C19.9725 10.1761 20.0174 10.1985 20.2197 9.83894C20.7591 8.93994 21.703 7.99599 23.0515 7.05204C23.8381 6.49017 24.4898 5.88334 24.4898 5.72602C24.4898 5.34394 22.0401 1.65805 21.1636 0.714099C20.1747 -0.31975 19.5679 -0.252324 18.4667 1.05122Z" fill="#B8282E" />
                                     <path d="M11.6584 1.65842C11.0516 1.95059 10.8043 3.18671 11.2538 3.72611C11.5685 4.10819 12.827 4.15314 13.2091 3.77106C13.5687 3.41146 13.5462 2.13039 13.2091 1.86069C12.6697 1.45614 12.1977 1.38872 11.6584 1.65842Z" fill="#B8282E" />
                                     <path d="M27.2338 1.59124C25.8629 2.10817 26.2225 4.04102 27.7058 4.04102C28.6272 4.04102 28.9868 3.70389 28.9868 2.78242C28.9868 1.77104 28.2002 1.23164 27.2338 1.59124Z" fill="#B8282E" />
@@ -667,13 +668,13 @@ export default function Home() {
                                     <path d="M18.7163 19.8856C18.0421 20.3575 17.8398 21.5487 18.2893 22.4252C19.368 24.4929 22.6268 22.9646 21.7953 20.7846C21.6604 20.425 21.3907 20.0204 21.166 19.8631C20.6491 19.4585 19.3006 19.481 18.7163 19.8856Z" fill="#B8282E" />
                                 </svg>
 
-                                <h2 className="text-[36px] leading-relaxed font-semibold text-jv-text-black text-center">
+                                <h2 className="text-[36px] max-md:text-[20px] leading-relaxed font-semibold text-jv-text-black text-center">
                                     धामबाट कसले लाभ लिन सक्नेछन् ?
                                 </h2>
                             </div>
 
-                            <div className="mt-[60px]">
-                                <div className="relative flex justify-between">
+                            <div className="mt-[60px] max-md:mt-[20px]">
+                                <div className="relative flex justify-between max-md:hidden">
                                     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
                                         <div className="min-w-[444px] w-[444px] h-[444px] relative animate-[spin_60s_linear_infinite]">
                                             <Image fill src={"/assets/goal_mandala.png"} alt="meditation" />
@@ -697,26 +698,50 @@ export default function Home() {
                                         ))}
                                     </ul>
                                 </div>
+
+                                <div className="hidden max-md:flex max-md:flex-col">
+                                    <div className="flex flex-col gap-[15px]">
+                                        {[...left, ...right].map((item, i) => (
+                                            <BenefitCard key={i} label={item} index={i + 1} />
+                                        ))}
+                                    </div>
+
+                                    <div className="w-[95vw] h-[95vw] relative">
+                                        <div className="w-full h-full relative">
+                                            <Image
+                                                fill
+                                                alt="chakra"
+                                                src={"/assets/goal_mandala.png"}
+                                                className="object-cover animate-[spin_60s_linear_infinite]" />
+                                        </div>
+
+                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[55%]">
+                                            <div className="w-full h-full relative">
+                                                <Image fill alt="mediation" src={"/assets/meditation.png"} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div className="mt-[90px]">
-                                <div className="flex gap-[68px]">
-                                    <div className="basis-[420px] grow-0 shrink-0">
-                                        <div className="w-full h-[420px] bg-[url('/assets/octa_chakra.svg')] bg-cover flex items-center justify-center">
-                                            <div className="w-[64px] h-[64px] relative">
+                            <div className="mt-[90px] max-md:mt-[15px]">
+                                <div className="flex gap-[68px] max-md:flex-col-reverse">
+                                    <div className="basis-[420px] grow-0 shrink-0 max-md:basis-[60vw] max-md:w-[60vw] max-md:mx-auto">
+                                        <div className="w-full h-[420px] max-md:h-[60vw] bg-[url('/assets/octa_chakra.svg')] bg-cover flex items-center justify-center">
+                                            <div className="w-[64px] h-[64px] max-md:w-[13vw] max-md:h-[13vw] relative">
                                                 <Image fill src={"/assets/gifs/octa_soul.gif"} alt="octa-chakra"></Image>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div className="flex-1">
-                                        <div className="flex flex-col gap-[26px]">
-                                            <div className="flex flex-col gap-[30px]">
-                                                <h2 className="text-[36px] leading-relaxed font-semibold text-jv-text-black">
+                                        <div className="flex flex-col gap-[26px] max-md:gap-[20px]">
+                                            <div className="flex flex-col gap-[30px] max-md:gap-[12px]">
+                                                <h2 className="text-[36px] leading-relaxed font-semibold text-jv-text-black max-md:text-[20px]">
                                                     ध्यान कक्षको संरचना र विशेषता
                                                 </h2>
 
-                                                <p className="text-[20px] leading-relaxed text-jv-text-black">
+                                                <p className="text-[20px] leading-relaxed text-jv-text-black max-md:text-[15px]">
                                                     नेपाली वास्तुकलामा आधारित अष्टकोणीय ध्यानकक्षले सकारात्मक ऊर्जा प्रवाहित गरी प्रवेश गर्ने सबैलाई दिव्यानुभूति गराउनेछ। पूर्णता र आठौँ चक्रको प्रतीक यस कक्षले साधकलाई गहन ध्यान र परम शान्तिको अनुभूति दिनेछ। विशेष विधिहरूबाट ब्रह्माण्डीय ऊर्जा आह्वान गरी पवित्र र ध्यानमय विराट् ऊर्जा मण्डल तयार गरिएको छ।
                                                 </p>
                                             </div>
@@ -728,10 +753,10 @@ export default function Home() {
                             </div>
                         </section>
 
-                        <section className="px-[150px] pt-[62px] pb-[76px]">
-                            <div className="flex flex-col gap-[38px]">
-                                <div className="flex items-center justify-center flex-col gap-[20px]">
-                                    <svg width="41" height="24" className="w-[41px] h-[24px]" viewBox="0 0 41 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <section className="px-[150px] pt-[62px] pb-[76px] max-md:p-[20px]">
+                            <div className="flex flex-col gap-[38px] max-md:gap-[9px]">
+                                <div className="flex items-center justify-center flex-col gap-[20px] max-md:gap-[12px]">
+                                    <svg width="41" height="24" className="w-[41px] h-[24px] max-md:w-[24px] max-md:h-[12px]" viewBox="0 0 41 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M18.9667 1.05122C18.0452 2.17497 16.1799 5.00682 15.9327 5.63612C15.8428 5.90582 16.1125 6.19799 16.8541 6.69244C17.8655 7.34422 19.4162 8.78261 20.1578 9.77151C20.4725 10.1761 20.5174 10.1985 20.7197 9.83894C21.2591 8.93994 22.203 7.99599 23.5515 7.05204C24.3381 6.49017 24.9898 5.88334 24.9898 5.72602C24.9898 5.34394 22.5401 1.65805 21.6636 0.714099C20.6747 -0.31975 20.0679 -0.252324 18.9667 1.05122Z" fill="#B8282E" />
                                         <path d="M12.1584 1.65842C11.5516 1.95059 11.3043 3.18671 11.7538 3.72611C12.0685 4.10819 13.327 4.15314 13.7091 3.77106C14.0687 3.41146 14.0462 2.13039 13.7091 1.86069C13.1697 1.45614 12.6977 1.38872 12.1584 1.65842Z" fill="#B8282E" />
                                         <path d="M27.7338 1.59124C26.3629 2.10817 26.7225 4.04102 28.2058 4.04102C29.1272 4.04102 29.4868 3.70389 29.4868 2.78242C29.4868 1.77104 28.7002 1.23164 27.7338 1.59124Z" fill="#B8282E" />
@@ -746,7 +771,7 @@ export default function Home() {
                                         <path d="M19.2163 19.8856C18.5421 20.3575 18.3398 21.5487 18.7893 22.4252C19.868 24.4929 23.1268 22.9646 22.2953 20.7846C22.1604 20.425 21.8907 20.0204 21.666 19.8631C21.1491 19.4585 19.8006 19.481 19.2163 19.8856Z" fill="#B8282E" />
                                     </svg>
 
-                                    <h2 className="text-[36px] leading-relaxed font-semibold text-jv-text-black">
+                                    <h2 className="text-[36px] leading-relaxed max-md:text-[20px] font-semibold text-jv-text-black">
                                         जीवन विज्ञान धाम सम्बन्धी तस्वीरहरू
                                     </h2>
                                 </div>
@@ -755,10 +780,10 @@ export default function Home() {
                             </div>
                         </section>
 
-                        <section className="px-[150px] pt-[62px] pb-[67px] flex gap-[46px] bg-[url('/assets/number_counter_bg.png')] bg-cover bg-no-repeat bg-center z-[1]">
-                            <div className="flex flex-col gap-[36px] flex-1">
-                                <div className="flex flex-col gap-[20px]">
-                                    <svg width="40" height="24" className="w-[40px] h-[24px]" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <section className="px-[150px] pt-[62px] pb-[67px] flex gap-[46px] bg-[url('/assets/number_counter_bg.png')] bg-cover bg-no-repeat bg-center z-[1] max-md:p-[20px] max-md:pb-0 max-md:flex-col">
+                            <div className="flex flex-col gap-[36px] flex-1 max-md:gap-[20px]">
+                                <div className="flex flex-col gap-[20px] max-md:gap-[12px]">
+                                    <svg width="40" height="24" className="w-[40px] h-[24px] max-md:w-[24px] max-md:h-[14px]" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M18.4667 1.05122C17.5452 2.17497 15.6799 5.00682 15.4327 5.63612C15.3428 5.90582 15.6125 6.19799 16.3541 6.69244C17.3655 7.34422 18.9162 8.78261 19.6578 9.77151C19.9725 10.1761 20.0174 10.1985 20.2197 9.83894C20.7591 8.93994 21.703 7.99599 23.0515 7.05204C23.8381 6.49017 24.4898 5.88334 24.4898 5.72602C24.4898 5.34394 22.0401 1.65805 21.1636 0.714099C20.1747 -0.31975 19.5679 -0.252324 18.4667 1.05122Z" fill="#B8282E" />
                                         <path d="M11.6584 1.65842C11.0516 1.95059 10.8043 3.18671 11.2538 3.72611C11.5685 4.10819 12.827 4.15314 13.2091 3.77106C13.5687 3.41146 13.5462 2.13039 13.2091 1.86069C12.6697 1.45614 12.1977 1.38872 11.6584 1.65842Z" fill="#B8282E" />
                                         <path d="M27.2338 1.59124C25.8629 2.10817 26.2225 4.04102 27.7058 4.04102C28.6272 4.04102 28.9868 3.70389 28.9868 2.78242C28.9868 1.77104 28.2002 1.23164 27.2338 1.59124Z" fill="#B8282E" />
@@ -773,30 +798,30 @@ export default function Home() {
                                         <path d="M18.7163 19.8856C18.0421 20.3575 17.8398 21.5487 18.2893 22.4252C19.368 24.4929 22.6268 22.9646 21.7953 20.7846C21.6604 20.425 21.3907 20.0204 21.166 19.8631C20.6491 19.4585 19.3006 19.481 18.7163 19.8856Z" fill="#B8282E" />
                                     </svg>
 
-                                    <h2 className="text-[36px] leading-relaxed font-semibold text-jv-text-black">
+                                    <h2 className="text-[36px] max-md:text-[20px] leading-relaxed font-semibold text-jv-text-black">
                                         धाम निर्माण स्थल
                                     </h2>
                                 </div>
 
-                                <ul className="list-disc pl-[30px]">
+                                <ul className="list-disc pl-[30px] max-md:pl-[20px]">
                                     {locationDetails.map(item => (
                                         <li key={item.key}
-                                            className="text-[20px] leading-[44px] text-jv-text-black">
+                                            className="text-[20px] leading-[44px] max-md:text-[15px] max-md:leading-[30px] text-jv-text-black">
                                             {item.label}
                                         </li>
                                     ))}
                                 </ul>
                             </div>
 
-                            <div className="basis-[610px] grow-0 shrink-0 mt-[40px]">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10127.298521366756!2d85.09634254345805!3d27.740551416395288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb2ff9c58be427%3A0xceba19bd328b07d6!2zSmVldmFuIFZpZ3lhbiBEaGFtICjgpJzgpYDgpLXgpKgg4KS14KS_4KSc4KWN4KSe4KS-4KSoIOCkp-CkvuCkrik!5e0!3m2!1sen!2snp!4v1752661113547!5m2!1sen!2snp" width="100%" height="410px" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+                            <div className="basis-[610px] grow-0 shrink-0 mt-[40px] h-[400px] max-md:basis-[100vw] max-md:w-screen max-md:mt-0 max-md:h-[220px] max-md:-mx-[20px]">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10127.298521366756!2d85.09634254345805!3d27.740551416395288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb2ff9c58be427%3A0xceba19bd328b07d6!2zSmVldmFuIFZpZ3lhbiBEaGFtICjgpJzgpYDgpLXgpKgg4KS14KS_4KSc4KWN4KSe4KS-4KSoIOCkp-CkvuCkrik!5e0!3m2!1sen!2snp!4v1752661113547!5m2!1sen!2snp" width="100%" height="100%" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </section>
                     </section>
                 </section>
 
-                <section className="h-[87px] w-full flex items-center justify-center bg-linear-[to_right,#D9B765,#CBAA59,#ECD46D,#E4C45F]">
-                    <h2 className="text-[30px] leading-relaxed font-semibold text-white text-shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+                <section className="h-[87px] w-full flex items-center justify-center bg-linear-[to_right,#D9B765,#CBAA59,#ECD46D,#E4C45F] max-md:h-[70px] max-md:p-[20px]">
+                    <h2 className="text-[30px] leading-relaxed font-semibold text-white text-shadow-[0_4px_4px_rgba(0,0,0,0.25)] max-md:text-[18px]">
                         आउनुहोस्, स्वस्थ, शान्त र समृद्ध राष्ट्रका निर्माणको यो अभियानमा हातेमालो गरौँ !!
                     </h2>
                 </section>
@@ -826,14 +851,14 @@ const ChakraCard = ({ icon, label, color }) => {
 
 const GoalCard = ({ label, icon }) => {
     return (
-        <article className={"px-[15px] py-[15px] rounded-[100px] flex items-center gap-[10px] border border-white bg-white hover:border-[#D9B950]"}>
-            <div className={"min-w-[70px] h-[70px] bg-[url('/assets/benefit_index_icon.png')] bg-cover flex items-center justify-center"}>
-                <div className="w-[40px] h-[40px] relative">
+        <article className={"p-[15px] rounded-[100px] flex items-center gap-[10px] border border-white bg-white hover:border-[#D9B950] max-md:p-[10px] max-md:gap-[10px]"}>
+            <div className={"min-w-[70px] h-[70px] bg-[url('/assets/benefit_index_icon.png')] bg-cover flex items-center justify-center max-md:min-w-[48px] max-md:w-[48px] max-md:h-[48px]"}>
+                <div className="w-[40px] h-[40px] relative max-md:w-[20px] max-md:h-[20px]">
                     <Image fill src={icon} alt={label} />
                 </div>
             </div>
 
-            <p className={"text-[20px] leading-[36px] text-jv-text-black"}>
+            <p className={"text-[20px] leading-[36px] max-md:text-[15px] max-md:leading-[30px] text-jv-text-black"}>
                 {label}
             </p>
         </article>
@@ -841,13 +866,13 @@ const GoalCard = ({ label, icon }) => {
 }
 
 const BenefitCard = ({ label, index }) => (
-    <article className={`flex items-center gap-[20px] ${index <= 3 ? ' pr-[20px]' : 'flex-row-reverse justify-end'}`}>
-        <p className="text-[20px] leading-relaxed text-jv-text-black">
+    <article className={`flex items-center gap-[20px] max-md:gap-[10px] ${index <= 3 ? 'pr-[20px] max-md:p-0 max-md:flex-row-reverse max-md:justify-end' : 'flex-row-reverse justify-end'}`}>
+        <p className="text-[20px] leading-relaxed text-jv-text-black max-md:text-[15px]">
             {label}
         </p>
 
-        <div className="flex items-center justify-center min-w-[62px] w-[62px] h-[62px] relative bg-[url('/assets/benefit_index_icon.png')] bg-cover">
-            <span className="text-[20px] leading-relaxed font-medium text-jv-red translate-y-0.5">
+        <div className="flex items-center justify-center min-w-[62px] w-[62px] h-[62px] relative bg-[url('/assets/benefit_index_icon.png')] bg-cover max-md:min-w-[42px] max-md:w-[42px] max-md:h-[42px]">
+            <span className="text-[20px] leading-relaxed font-medium text-jv-red translate-y-0.5 max-md:text-[12px]">
                 {index}
             </span>
         </div>

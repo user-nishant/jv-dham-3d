@@ -223,7 +223,6 @@ const ChakraSpinner = () => {
 
         // Radius of the semicircle (adjust based on container size)
         const radius = (window.innerWidth + 100) / 4
-        console.log(radius, 'this is the radius');
 
         // Calculate x and y positions
         const x = 50 + (radius * Math.cos(angle)) / 8 // Convert to percentage and scale
@@ -240,7 +239,7 @@ const ChakraSpinner = () => {
                     <div key={i}
                         className={styles.itemContent}
                         style={{
-                            animationDelay: `${((i * 5) / chakraList.length * 2).toFixed(
+                            animationDelay: `${(((i - 3) * 5) / chakraList.length * 4).toFixed(
                                 1
                             )}s`,
                         }}>
@@ -272,7 +271,7 @@ const ChakraSpinner = () => {
                 })}
             </div> */}
             {/* </div> */}
-        </div>
+        </div >
     )
 }
 
@@ -280,10 +279,10 @@ export default ChakraSpinner;
 
 const ChakraCard = ({ icon, label, color }) => {
     return (
-        <div className="w-[96px] h-[96px] flex flex-col gap-[10px] items-center justify-center">
+        <div className="w-[96px] h-[96px] max-md:w-[24px] max-md:h-[24px] flex flex-col gap-[10px] max-md:gap-[8px] items-center justify-center">
             {icon}
 
-            <div className="w-[100px] h-[20px] flex items-center justify-center px-[10px]"
+            <div className="w-[100px] h-[20px] flex items-center justify-center px-[10px] max-md:hidden"
                 style={{
                     background: color,
                     clipPath: "path('M93.8706 7.67975C92.9206 5.92975 91.6306 0.509766 84.8006 0.509766H13.0906C6.25061 0.509766 4.96063 5.92975 4.02063 7.67975C3.08063 9.42975 0.890625 11.2397 0.890625 11.2397C0.890625 11.2397 3.07063 13.0397 4.02063 14.7997C4.96063 16.5497 6.25061 21.9698 13.0906 21.9698H84.8006C91.6406 21.9698 92.9206 16.5497 93.8706 14.7997C94.8106 13.0497 97.0006 11.2397 97.0006 11.2397C97.0006 11.2397 94.8206 9.42975 93.8706 7.67975Z')"
