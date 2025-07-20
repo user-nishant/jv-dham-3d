@@ -21,7 +21,7 @@ const config = {
   plugins: {
     '@tailwindcss/postcss': {},
     // tailwindcss: {},
-    'postcss-px-to-viewport-8-plugin': option,
+    // 'postcss-px-to-viewport-8-plugin': option,
     autoprefixer: {}
   },
 };

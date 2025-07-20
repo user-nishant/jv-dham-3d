@@ -97,7 +97,7 @@ export function ImageCarousel() {
                         ))}
                     </div>
 
-                    <div className='flex items-center gap-[12px]'>
+                    <div className='flex items-center gap-[12px] max-md:hidden'>
                         <button className={styles.chevronBtn}
                             onClick={() => sliderRef.current?.slickGoTo(slideIndex - 1)}>
                             <FaArrowLeft />
