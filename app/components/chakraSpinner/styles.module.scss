@@ -1,14 +1,14 @@
 .spinnerContainer {
   width: 100vw;
-  height: 790px;
+  height: calc((100vw + 100px) / 2);
   overflow: hidden;
   z-index: -1;
 
   .spinPath {
     width: calc(100vw + 100px);
     height: calc(100vw + 100px);
-    border-radius: 50%;
-    background-image: linear-gradient(to top, #ffffff, #ffebc3);
+    border-radius: calc(100vw + 100px);
+    // background-image: linear-gradient(to top, #ffffff, #ffebc3);
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -23,8 +23,13 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      animation: circular 20s linear infinite;
+      animation: circular 50s linear infinite;
       z-index: 10;
+
+      @media only screen and (max-width: 767px) {
+        top: calc(50% - 20px);
+        left: calc(50% + 0px);
+      }
     }
   }
 
