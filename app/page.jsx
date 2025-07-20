@@ -452,9 +452,9 @@ export default function Home() {
                                 झल्किने वास्तुकलामा आधारित अत्याधुनिक संरचना तयार हुँदैछ। जीवन विज्ञान धामका लक्ष्यहरूः
                             </p>
 
-                            <div className={"flex items-center justify-center flex-wrap gap-[35px] max-md:gap-[20px]"}>
+                            <div className={"flex items-center justify-center flex-wrap gap-[35px] max-md:gap-[20px] max-md:justify-start"}>
                                 {goalList.map(item => (
-                                    <div key={item.key} className="basis-[48%] max-w-[60%] shrink grow max-md:basis-auto max-md:max-w-full max-md:shrink-0 max-md:grow-0">
+                                    <div key={item.key} className="basis-[48%] max-w-[60%] shrink grow max-md:basis-[100%] max-md:max-w-full max-md:shrink-0 max-md:grow-0">
                                         <GoalCard
                                             label={item.label}
                                             icon={item.icon} />
