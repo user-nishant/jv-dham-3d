@@ -25,9 +25,9 @@ const contribution = [
 ]
 
 const contactDetails = {
-    phoneNumber: ['01-4572830', '9851332863', '9851332963'],
+    phoneNumber: ['9851332863'],
     mail: 'info@jeevanvigyan.org',
-    location: 'Ganesh Marga ( Near Ganesh Temple ), Chabahil, Kathmandu'
+    location: 'Ganesh Marga (Near Ganesh Temple), Chabahil, Kathmandu'
 }
 
 const Footer = ({ showFullSection = true }) => {

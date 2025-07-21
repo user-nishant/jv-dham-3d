@@ -122,7 +122,7 @@ export default function DhamGoals() {
 
 const GoalCard = ({ label, icon }) => {
     return (
-        <article className={"p-[15px] rounded-[100px] flex items-center gap-[10px] border border-white bg-white hover:border-[#D9B950] max-md:p-[10px] max-md:gap-[10px]"}>
+        <article className={"p-[15px] rounded-[100px] flex items-center gap-[10px] border border-white bg-white hover:border-[#D9B950] transition-colors duration-100 delay-100 max-md:p-[10px] max-md:gap-[10px]"}>
             <div className={"min-w-[70px] h-[70px] bg-[url('/assets/benefit_index_icon.png')] bg-cover flex items-center justify-center max-md:min-w-[48px] max-md:w-[48px] max-md:h-[48px]"}>
                 <div className="w-[40px] h-[40px] relative max-md:w-[20px] max-md:h-[20px]">
                     <Image fill src={icon} alt={label} />

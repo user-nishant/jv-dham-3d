@@ -16,19 +16,19 @@
     .itemContent {
       position: absolute;
       top: calc(50% - 60px);
-      left: calc(50% - 60px);
+      left: calc(50% - 25px);
       //   width: px2vwL(120);
       //   height: px2vwL(50);
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      animation: circular 50s linear infinite;
+      animation: circular 70s linear infinite;
       z-index: 10;
 
       @media only screen and (max-width: 767px) {
         top: calc(50% - 20px);
-        left: calc(50% + 0px);
+        left: calc(50% - 40px);
       }
     }
   }
