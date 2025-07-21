@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 function ParallaxHero() {
-    const ref = useRef();
+    const ref = useRef(null);
     const [visible, setVisible] = useState(true);
 
     useEffect(() => {
@@ -41,7 +41,7 @@ function ParallaxHero() {
                 <Image fill src={'/assets/header_text.svg'} alt="‘युग बदल्ने धाम, बनाउने मेरो काम’"></Image>
             </div>
 
-            <h1 className="text-[100px] leading-[1.2] max-md:text-[50px] font-semibold text-jv-red text-center mt-[15px] after::content-none after:table after:mb-[calc(-0.5lh+0.3em)]">
+            <h1 className="text-[100px] leading-[1.2] max-xl:text-[80px] max-md:text-[50px] font-semibold text-jv-red text-center mt-[15px] after::content-none after:table after:mb-[calc(-0.5lh+0.3em)]">
                 जीवन विज्ञान धाम
             </h1>
 

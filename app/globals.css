@@ -279,3 +279,9 @@ font-size: 36px;
   }
 } */
 
+.trim-leading::after {
+    content: '';
+    display: table;
+    margin-bottom: calc(-0.5lh + 0.38em);
+}
+

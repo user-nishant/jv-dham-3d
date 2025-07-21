@@ -12,13 +12,13 @@ const contribution = [
     {
         key: 2,
         icon: '/assets/gifs/house.gif',
-        title: 'आर्थिक योगदान',
+        title: 'वस्तुगत योगदान',
         label: 'तपाईंले व्यक्तिगत वा पारिवारिक रूपमा पार्क, ध्यानकक्ष, आवास आदि भौतिक संरचना निर्माण गरेर प्रतिष्ठानलाई हस्तान्तरण गर्न सक्नुहुन्छ।'
     },
     {
         key: 3,
         icon: '/assets/gifs/high-five.gif',
-        title: 'आर्थिक योगदान',
+        title: 'श्रमदान',
         label: 'आफ्ना सीप र क्षमतामार्फत सेवा प्रदान गरी आत्मिक सन्तुष्टि र पुण्यको अनुभूति प्राप्त गर्नुहोस्।'
     }
 ]
@@ -37,7 +37,7 @@ const Footer = ({ showFullSection = true }) => {
             {
                 showFullSection &&
                 <>
-                    <section className="px-[150px] max-md:px-[20px] pt-[60px] pb-[100px] relative">
+                    <section className="px-[150px] max-xl:px-[5%] max-md:px-[20px] pt-[60px] pb-[100px] relative">
                         <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
                             <div className="w-[358px] h-[226px] relative">
                                 <Image fill alt="lotus" src={'/assets/lotus.png'} />
@@ -151,7 +151,7 @@ const Footer = ({ showFullSection = true }) => {
                 </>
             }
             <section
-                className="px-[150px] max-md:px-[20px] pt-[21px] pb-[23px] bg-[url('/assets/decorative_bg.png')] relative z-[1]">
+                className="px-[150px] max-xl:px-[5%] max-md:px-[20px] pt-[21px] pb-[23px] bg-[url('/assets/decorative_bg.png')] relative z-[1]">
                 <div className="flex items-center justify-between">
                     <p className="text-[20px] leading-relaxed font-medium text-white w-full text-center">
                         मानव समाजको उन्नति, प्रगति र अभ्युदयका साथ आध्यात्मिक जागरण ल्याउने, हरेकको जीवनलाई
@@ -173,7 +173,7 @@ const Footer = ({ showFullSection = true }) => {
                 </div>
             </section>
 
-            <section className="px-[150px] max-md:px-[20px] pt-[0px] pb-[36px] relative">
+            <section className="px-[150px] max-xl:px-[5%] max-md:px-[20px] pt-[0px] pb-[36px] relative">
                 <div className='w-full relative'>
                     <div className='w-full absolute flex justify-center'>
                         <img src='/assets/footer.png' className='w-[408px]' />
@@ -185,7 +185,7 @@ const Footer = ({ showFullSection = true }) => {
 
 
                 <div className="mt-[85px]">
-                    <div className="flex items-center max-md:flex-col max-md:items-start max-md:flex-wrap  max-md:gap-[10px] gap-[68px]">
+                    <div className="flex items-center justify-between max-md:flex-col max-md:items-start max-lg:flex-wrap  max-md:gap-[10px] gap-[68px]">
                         <ContactCard icon={(
                             <svg width="36" height="36" className="w-[36px] h-[36px]" viewBox="0 0 36 36" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
