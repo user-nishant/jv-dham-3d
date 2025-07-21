@@ -125,7 +125,7 @@ export default function AboutUs() {
                     </div>
 
                     <div
-                        className={"grow-0 shrink-0 basis-[44vw] h-[355px] rounded-[20px] border border-[#D9B950] relative mt-[80px] max-md:basis-auto max-md:h-[165px]"}>
+                        className={"grow-0 shrink-0 basis-[44vw] h-[24vw] rounded-[20px] border border-[#D9B950] relative mt-[80px] max-md:basis-auto max-md:h-[60vw]"}>
                         <div className={"absolute -top-[18%] -left-[6.5%] max-md:-top-[16px] max-md:-left-[16px] z-1 flex items-center justify-center"}>
                             <div className={"w-[155px] h-[155px] relative max-md:w-[72px] max-md:h-[72px]"}>
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-1">
@@ -144,19 +144,20 @@ export default function AboutUs() {
                         </div>
 
                         <div
-                            className={"w-full h-[360px] max-md:w-full relative rounded-[20px] border-[6px] border-white overflow-hidden top-[9.7%] left-[7%] max-md:top-[16px] max-md:left-[20px] max-md:h-[168px]"}>
+                            className={"w-full h-[24vw] max-md:w-full relative rounded-[20px] border-[6px] border-white overflow-hidden top-[9.7%] left-[7%] max-md:top-[16px] max-md:left-[20px] max-md:h-[60vw]"}>
                             <Image fill
                                 src={"/assets/gurus.png"}
                                 alt={"guru"}
                                 style={{
-                                    objectFit: "cover"
+                                    objectFit: "cover",
+                                    objectPosition: "top"
                                 }} />
                         </div>
                     </div>
                 </div>
 
                 <div
-                    className={"h-[91px] px-[150px] flex items-center bg-[url('/assets/decorative_bg.png')] bg-cover bg-no-repeat bg-center -mx-[150px] -mt-[10%] max-xl:px-[5%] max-xl:-mx-[6%] max-md:px-[20px] max-md:h-[60px] max-md:-mx-[20px] max-md:-mt-[5%]"}>
+                    className={"h-[91px] px-[150px] flex items-center bg-[url('/assets/decorative_bg.png')] bg-cover bg-no-repeat bg-center -mx-[150px] -mt-[10%] max-xl:px-[5%] max-xl:-mx-[6%] max-md:px-[20px] max-md:h-[60px] max-md:-mx-[20px] max-md:-mt-[2%]"}>
                     <Link href={"https://jeevanvigyan.org"}
                         target={'_blank'}>
                         <div className="group flex items-center gap-[5px] text-[20px] leading-[1.3] text-white max-md:text-[15px]">

@@ -31,7 +31,7 @@ const chakraList = [
                     strokeMiterlimit="10" />
             </svg>
         ),
-        label: 'Muladara',
+        label: 'मूलाधार',
         color: '#FF4933'
     },
     {
@@ -68,7 +68,7 @@ const chakraList = [
                     stroke="#FF7C1B" strokeMiterlimit="10" />
             </svg>
         ),
-        label: 'Svadhisthana',
+        label: 'स्वाधिष्ठान',
         color: '#FF7C1B'
 
     },
@@ -89,7 +89,7 @@ const chakraList = [
                 <path d="M22.5801 23.7861L33.0448 44.6863L43.5095 23.7861H22.5801Z" stroke="#FFCA2C" strokeMiterlimit="10" />
             </svg>
         ),
-        label: 'Manipura',
+        label: 'मणिपूर',
         color: '#FFCA2C'
     },
     {
@@ -113,7 +113,7 @@ const chakraList = [
                 <path d="M32.045 15.5007C41.1515 15.5007 48.564 22.9132 48.564 32.0197C48.564 41.1261 41.1515 48.5386 32.045 48.5386C22.9385 48.5386 15.5261 41.1261 15.5261 32.0197C15.5261 22.9132 22.9385 15.5007 32.045 15.5007ZM32.045 14.5215C22.4 14.5215 14.5469 22.3648 14.5469 32.0197C14.5469 41.6745 22.3902 49.5178 32.045 49.5178C41.6999 49.5178 49.5432 41.6745 49.5432 32.0197C49.5432 22.3648 41.6999 14.5215 32.045 14.5215Z" fill="#6AC280" />
             </svg>
         ),
-        label: 'Anahata',
+        label: 'अनाहद',
         color: '#6AC280'
     },
     {
@@ -147,7 +147,7 @@ const chakraList = [
                 <path d="M23.165 49.7278C23.9903 50.1503 24.8451 50.504 25.7196 50.7987C25.3266 51.0935 24.9827 51.2605 24.6977 51.3981C24.5111 51.4865 24.3539 51.5651 24.2163 51.6437C24.0591 51.7419 23.8823 51.8598 23.7152 51.9974C23.6956 51.7812 23.6661 51.5749 23.617 51.3882C23.5777 51.2409 23.5286 51.064 23.4598 50.8773C23.3517 50.5826 23.2338 50.2191 23.165 49.7278ZM22.212 48.0674C21.9467 50.1012 22.5166 51.0247 22.664 51.624C22.8801 52.5279 22.7327 54.3456 22.7327 54.3456C22.7327 54.3456 23.9216 52.9602 24.7272 52.4886C25.2578 52.1644 26.309 51.9384 27.5765 50.3271C27.3308 50.2682 27.0852 50.1994 26.8494 50.1306C25.1988 49.659 23.6465 48.9516 22.212 48.0674Z" fill="#00C7FF" />
             </svg>
         ),
-        label: 'Vishuddha',
+        label: 'विशुद्धि',
         color: '#00C7FF'
     },
     {
@@ -166,7 +166,7 @@ const chakraList = [
                 <path d="M19.7999 5.42528C15.2199 9.40528 12.3299 15.2653 12.3299 21.7853C12.3299 28.3053 15.2299 34.1853 19.8099 38.1553C11.3199 38.1553 8.77992 31.9253 7.41992 28.5653C7.20992 28.0653 7.03988 27.6253 6.87988 27.3153C5.70988 24.9753 2.91989 22.4753 2.88989 22.4453L2.15991 21.7853L2.88989 21.1253C2.88989 21.1253 5.70988 18.5953 6.87988 16.2553C7.03988 15.9253 7.21992 15.4953 7.41992 14.9953C8.78992 11.6553 11.3199 5.42528 19.7999 5.41528M22.4799 4.41528H19.7999C10.6599 4.42528 7.84988 11.3053 6.49988 14.6053C6.29988 15.0953 6.12992 15.5153 5.97992 15.8253C4.99992 17.7953 2.68992 19.9653 2.22992 20.3753L2.2099 20.3953L1.48987 21.0453L0.669922 21.7853L1.48987 22.5253L2.21991 23.1853C2.68991 23.6153 4.99987 25.7853 5.98987 27.7653C6.10987 28.0053 6.25992 28.3553 6.41992 28.7653L6.49988 28.9553C7.84988 32.2653 10.6599 39.1553 19.8199 39.1553H22.4999L20.4799 37.3953C15.9499 33.4653 13.3499 27.7753 13.3499 21.7753C13.3499 15.7753 15.9499 10.1053 20.4799 6.16528L22.4999 4.40527L22.4799 4.41528Z" fill="#854EFF" />
             </svg>
         ),
-        label: 'Ajna',
+        label: 'आज्ञा',
         color: '#854EFF'
     },
     {
@@ -207,39 +207,21 @@ const chakraList = [
                 <path d="M55.5576 24.4306C55.5576 24.5013 55.5677 24.572 55.5778 24.6428C55.6586 25.5723 55.7596 26.7545 55.5273 27.9771C55.2848 27.7548 55.0018 27.5325 54.6785 27.3102C55.2544 26.1584 55.4262 25.1682 55.5374 24.5316V24.4811C55.5374 24.4811 55.5576 24.4508 55.5576 24.4407M57.245 19.9544L55.891 21.7631C55.4767 22.3188 54.7795 23.4101 54.628 23.9658C54.6078 24.0466 54.5775 24.1982 54.5472 24.3497C54.4158 25.0974 54.2137 26.2998 53.3145 27.6538C54.7391 28.4116 55.4868 29.3513 55.9617 29.9474C57.1136 27.4214 56.5275 24.8347 56.5174 23.602C56.5174 22.3491 56.9418 20.8335 57.245 19.9443V19.9544Z" fill="#FF4B8D" />
             </svg>
         ),
-        label: 'Sahasrara',
+        label: 'सहस्रार',
         color: '#FF4B8D'
     }
 ]
 
 const ChakraSpinner = () => {
-    const getElementPosition = (index, total) => {
-        // Angle range for semicircle (180 degrees in radians)
-        const angleRange = Math.PI
-        // Start angle (to center the semicircle)
-        const startAngle = 0
-        // Calculate angle for this element
-        const angle = startAngle + (angleRange * index) / (total - 1)
-
-        // Radius of the semicircle (adjust based on container size)
-        const radius = (window.innerWidth + 100) / 4
-
-        // Calculate x and y positions
-        const x = 50 + (radius * Math.cos(angle)) / 8 // Convert to percentage and scale
-        const y = 60 - (radius * Math.sin(angle)) / 10 // Convert to percentage and scale
-
-        return { x: `${x}%`, y: `${y}%` }
-    }
-
     return (
         <div
             className={styles.spinnerContainer}>
             <div className={styles.spinPath}>
-                {[...chakraList, ...chakraList].map((item, i) => (
+                {[...chakraList, ...chakraList, ...chakraList].map((item, i) => (
                     <div key={i}
                         className={styles.itemContent}
                         style={{
-                            animationDelay: `${(((i - 3) * 5) / chakraList.length * 4).toFixed(
+                            animationDelay: `${(((i - 4) * 10) / chakraList.length * 2.3).toFixed(
                                 1
                             )}s`,
                         }}>
@@ -249,28 +231,6 @@ const ChakraSpinner = () => {
                     </div>
                 ))}
             </div>
-            {/* <div className={styles.spinPath}> */}
-            {/* <div className="">
-                {chakraList.map((item, index) => {
-                    const position = getElementPosition(index, chakraList.length)
-
-                    return (
-                        <div
-                            key={index}
-                            className="absolute transform -translate-x-1/2 -translate-y-1/2"
-                            style={{
-                                left: position.x,
-                                top: position.y,
-                            }}
-                        >
-                            <ChakraCard icon={item.icon}
-                                label={item.label}
-                                color={item.color} />
-                        </div>
-                    )
-                })}
-            </div> */}
-            {/* </div> */}
         </div >
     )
 }

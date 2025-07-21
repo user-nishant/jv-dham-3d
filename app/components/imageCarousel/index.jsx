@@ -1,10 +1,10 @@
 'use client';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
 import styles from './styles.module.scss';
 import { useRef, useState } from 'react';
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
+import { Image } from 'antd';
 
 const Slider = dynamic(() => import('react-slick'), { ssr: false });
 
@@ -73,18 +73,23 @@ export function ImageCarousel() {
 
     return (
         <section className={styles.sliderContainer}>
-            <Slider {...settings}
-                ref={sliderRef}>
-                {imageList.map(item => (
-                    <div key={item.key}
-                        className='h-[200px] relative'>
-                        <Image fill
-                            alt={`dham-${item.key}`}
-                            src={item.path}
-                            className='pr-[15px] object-cover' />
-                    </div>
-                ))}
-            </Slider>
+            <Image.PreviewGroup preview={{
+                toolbarRender: () => null
+            }}>
+                <Slider {...settings}
+                    ref={sliderRef}>
+                    {imageList.map(item => (
+                        <div key={item.key}
+                            className='h-[200px] relative'>
+                            <Image width={'100%'}
+                                height={200}
+                                alt={`dham-${item.key}`}
+                                src={item.path}
+                                className='pr-[15px] object-cover' />
+                        </div>
+                    ))}
+                </Slider>
+            </Image.PreviewGroup>
 
             <div className='mt-[24px]'>
                 <div className={`flex items-center gap-[28px] ${styles.sliderFooter}`}>
