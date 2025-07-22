@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Header = () => {
     return (
-        <header className="px-[150px] py-[10px] max-md:px-4 max-md:py-2">
+        <header className="px-[150px] py-[10px] max-xl:px-[5%] max-md:px-4 max-md:py-2">
             <div className="flex items-center justify-center">
                 <Link href='/'>
                     <div className="w-[125px] h-[88px] relative">
